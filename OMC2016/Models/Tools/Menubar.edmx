@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MenuBarItem">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="MenuNameOption" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MenuController" Type="varchar" MaxLength="50" />
+          <Property Name="MenuAction" Type="varchar" MaxLength="50" />
+          <Property Name="MenuImage" Type="varchar" MaxLength="50" />
+          <Property Name="MenuDep" Type="int" />
+          <Property Name="MenuStatus" Type="bit" Nullable="false" />
+          <Property Name="MenuIsParrent" Type="bit" />
+          <Property Name="MenuParrentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuRoles">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="tinyint" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="idmenu" Type="int" Nullable="false" />
+          <Property Name="MenuStatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="MenuBarItem" EntityType="Self.MenuBarItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuRoles" EntityType="Self.MenuRoles" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MenuBarItem">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="MenuNameOption" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenuController" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MenuAction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MenuImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MenuDep" Type="Int32" />
+          <Property Name="MenuStatus" Type="Boolean" Nullable="false" />
+          <Property Name="MenuIsParrent" Type="Boolean" />
+          <Property Name="MenuParrentID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuRole">
+          <Key>
+            <PropertyRef Name="rowid" />
+          </Key>
+          <Property Name="rowid" Type="Byte" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="idmenu" Type="Int32" Nullable="false" />
+          <Property Name="MenuStatus" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MenuBarItems" EntityType="Self.MenuBarItem" />
+          <EntitySet Name="MenuRoles" EntityType="Self.MenuRole" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="MenuBarItems">
+            <EntityTypeMapping TypeName="Model.MenuBarItem">
+              <MappingFragment StoreEntitySet="MenuBarItem">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="MenuNameOption" ColumnName="MenuNameOption" />
+                <ScalarProperty Name="MenuController" ColumnName="MenuController" />
+                <ScalarProperty Name="MenuAction" ColumnName="MenuAction" />
+                <ScalarProperty Name="MenuImage" ColumnName="MenuImage" />
+                <ScalarProperty Name="MenuDep" ColumnName="MenuDep" />
+                <ScalarProperty Name="MenuStatus" ColumnName="MenuStatus" />
+                <ScalarProperty Name="MenuIsParrent" ColumnName="MenuIsParrent" />
+                <ScalarProperty Name="MenuParrentID" ColumnName="MenuParrentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuRoles">
+            <EntityTypeMapping TypeName="Model.MenuRole">
+              <MappingFragment StoreEntitySet="MenuRoles">
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idmenu" ColumnName="idmenu" />
+                <ScalarProperty Name="MenuStatus" ColumnName="MenuStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

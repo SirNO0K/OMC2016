@@ -1,0 +1,136 @@
+﻿@model IEnumerable<OMC2016.Models.Customer.CustomerList>
+@{
+    ViewBag.Title = "CustomerList";
+}
+
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+
+    .btn-default:hover {
+        color: #333;
+        background-color: #fff;
+        border-color: #adadad;
+    }
+</style>
+
+<br />
+
+<div id="Panal" class="panel panel-primary hidden">
+
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-table fa-fw"></i> Customer List</h3>
+    </div>
+    <div class="panel-body">
+
+        <from class="navbar navbar-left" style="margin-bottom:-10px;">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    @Html.DropDownList("GroupCustomer", new List<SelectListItem> { new SelectListItem { Text = "-- Select Group --", Value = "0" } }, new { @class = "btn btn-default dropdown-toggle ddlProjectvalue" })
+                </div>
+                <input type="text" class="form-control" placeholder="Search Customer Name" id="txtSearch" style="height:32px;">
+            </div>
+        </from>
+
+        <table id="CustomerList" class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CustomerCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CustomeName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CustomerPhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CustomerGroup)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int Row = 1; }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Row.ToString()
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => item.CustomerCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => item.CustomeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => item.CustomerPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => item.CustomerGroup)
+                        </td>
+                        <td>
+                            @Html.ActionLink("ดูรายละเอียด", "Detail", new { id = item.CustomerCode })
+                        </td>
+                    </tr>
+                    Row++;
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Panal').removeClass("hidden");
+
+        var dataTableInstance = $('#CustomerList').DataTable({
+            searching: true,
+            sort: false,
+            autoWidth: true,            
+            lengthChange: false,
+            bFilter: false,
+        });
+
+        $('#txtSearch').on('keyup change', function () {
+            dataTableInstance.columns(2).search(this.value).draw();
+        });
+
+        $.ajax({
+            url: '/Customer/GetCustomerGroup',
+            dataType: "json",
+            type: "GET",
+            success: function (data) {
+                var $dpCustomerFroup = $(".ddlProjectvalue");
+                $('.ddlProjectvalue').find('option[value=0]').hide();
+
+                $.each(data, function (i) {
+                    var optionhtml = '<option value="' + data[i].Key + '">' + data[i].Value + '</option>';
+                    $dpCustomerFroup.append(optionhtml);
+                });
+                $dpCustomerFroup.append('<option value="0">Show ALL Customer</option>');
+            },
+            error: function () {
+                alert("Error");
+            }
+        });
+
+        $('.ddlProjectvalue').change(function () {
+            var val = $(this).find('option:selected').text();
+            if ($(this).val() == 0) {
+                dataTableInstance.search('').columns(3).search('').draw();
+            }
+            else {
+                dataTableInstance.columns(4).search(val).draw();
+            }
+        });
+
+    });
+
+</script>

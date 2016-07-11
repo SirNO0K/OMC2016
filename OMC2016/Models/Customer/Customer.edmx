@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Customer.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADDRBOOK">
+          <Key>
+            <PropertyRef Name="ADDB_KEY" />
+          </Key>
+          <Property Name="ADDB_KEY" Type="int" Nullable="false" />
+          <Property Name="ADDB_COMPANY" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ADDB_BRANCH" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_TAX_ID" Type="char" MaxLength="13" />
+          <Property Name="ADDB_ADDB_1" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_ADDB_2" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_ADDB_3" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_PROVINCE" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_POST" Type="char" MaxLength="5" />
+          <Property Name="ADDB_PHONE" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_FAX" Type="varchar" MaxLength="30" />
+          <Property Name="ADDB_WEBSITE" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_BT" Type="int" Nullable="false" />
+          <Property Name="ADDB_STA" Type="int" Nullable="false" />
+          <Property Name="ADDB_REMARK" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_SEARCH" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_EMAIL" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_CONNECT" Type="int" />
+          <Property Name="ADDB_GPS_LAT_S" Type="varchar" MaxLength="20" />
+          <Property Name="ADDB_GPS_LONG_S" Type="varchar" MaxLength="20" />
+          <Property Name="ADDB_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="ARADDRESS">
+          <Key>
+            <PropertyRef Name="ARA_KEY" />
+          </Key>
+          <Property Name="ARA_KEY" Type="int" Nullable="false" />
+          <Property Name="ARA_AR" Type="int" Nullable="false" />
+          <Property Name="ARA_ADDB" Type="int" Nullable="false" />
+          <Property Name="ARA_DEFAULT" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ARA_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="ARCAT">
+          <Key>
+            <PropertyRef Name="ARCAT_KEY" />
+          </Key>
+          <Property Name="ARCAT_KEY" Type="int" Nullable="false" />
+          <Property Name="ARCAT_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ARCAT_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ARCAT_ACCESS" Type="smallint" Nullable="false" />
+          <Property Name="ARCAT_UDF_1" Type="money" Nullable="false" />
+          <Property Name="ARCAT_UDF_2" Type="money" Nullable="false" />
+          <Property Name="ARCAT_UDF_3" Type="money" Nullable="false" />
+          <Property Name="ARCAT_UDF_4" Type="money" Nullable="false" />
+          <Property Name="ARCAT_UDF_5" Type="money" Nullable="false" />
+          <Property Name="ARCAT_UDF_6" Type="money" Nullable="false" />
+          <Property Name="ARCAT_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="ARFILE">
+          <Key>
+            <PropertyRef Name="AR_KEY" />
+          </Key>
+          <Property Name="AR_KEY" Type="int" Nullable="false" />
+          <Property Name="AR_CODE" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="AR_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AR_ARCAT" Type="int" Nullable="false" />
+          <Property Name="AR_AC" Type="int" Nullable="false" />
+          <Property Name="AR_ENABLE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AR_ACCESS" Type="smallint" Nullable="false" />
+          <Property Name="AR_SLMNCODE" Type="varchar" MaxLength="12" />
+          <Property Name="AR_ARL" Type="int" Nullable="false" />
+          <Property Name="AR_ARTY" Type="int" Nullable="false" />
+          <Property Name="AR_ARG" Type="int" Nullable="false" />
+          <Property Name="AR_ARR" Type="int" Nullable="false" />
+          <Property Name="AR_ARGL" Type="int" Nullable="false" />
+          <Property Name="AR_DEPT" Type="int" Nullable="false" />
+          <Property Name="AR_REMARK" Type="varchar" MaxLength="60" />
+          <Property Name="AR_UDF_1" Type="money" Nullable="false" />
+          <Property Name="AR_UDF_2" Type="money" Nullable="false" />
+          <Property Name="AR_UDF_3" Type="money" Nullable="false" />
+          <Property Name="AR_UDF_4" Type="money" Nullable="false" />
+          <Property Name="AR_UDF_5" Type="money" Nullable="false" />
+          <Property Name="AR_UDF_6" Type="money" Nullable="false" />
+          <Property Name="AR_MBCODE" Type="varchar" MaxLength="20" />
+          <Property Name="AR_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="CONTACT">
+          <Key>
+            <PropertyRef Name="CT_KEY" />
+          </Key>
+          <Property Name="CT_KEY" Type="int" Nullable="false" />
+          <Property Name="CT_INTL" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CT_NAME" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CT_SURNME" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CT_E_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="CT_JOBTITLE" Type="varchar" MaxLength="60" />
+          <Property Name="CT_EMAIL" Type="varchar" MaxLength="60" />
+          <Property Name="CT_MOBILE" Type="varchar" MaxLength="60" />
+          <Property Name="CT_ADDB" Type="int" Nullable="false" />
+          <Property Name="CT_STA" Type="int" Nullable="false" />
+          <Property Name="CT_REMARK" Type="varchar" MaxLength="60" />
+          <Property Name="CT_CANEMAIL" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CT_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <Association Name="AR2ARCAT">
+          <End Role="ARCAT" Type="Self.ARCAT" Multiplicity="1" />
+          <End Role="ARFILE" Type="Self.ARFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARCAT">
+              <PropertyRef Name="ARCAT_KEY" />
+            </Principal>
+            <Dependent Role="ARFILE">
+              <PropertyRef Name="AR_ARCAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ARA2ADDB">
+          <End Role="ADDRBOOK" Type="Self.ADDRBOOK" Multiplicity="1" />
+          <End Role="ARADDRESS" Type="Self.ARADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRBOOK">
+              <PropertyRef Name="ADDB_KEY" />
+            </Principal>
+            <Dependent Role="ARADDRESS">
+              <PropertyRef Name="ARA_ADDB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ARA2AR">
+          <End Role="ARFILE" Type="Self.ARFILE" Multiplicity="1" />
+          <End Role="ARADDRESS" Type="Self.ARADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARFILE">
+              <PropertyRef Name="AR_KEY" />
+            </Principal>
+            <Dependent Role="ARADDRESS">
+              <PropertyRef Name="ARA_AR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CT2ADDB">
+          <End Role="ADDRBOOK" Type="Self.ADDRBOOK" Multiplicity="1" />
+          <End Role="CONTACT" Type="Self.CONTACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRBOOK">
+              <PropertyRef Name="ADDB_KEY" />
+            </Principal>
+            <Dependent Role="CONTACT">
+              <PropertyRef Name="CT_ADDB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CustomerStoreContainer">
+          <EntitySet Name="ADDRBOOK" EntityType="Self.ADDRBOOK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARADDRESS" EntityType="Self.ARADDRESS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARCAT" EntityType="Self.ARCAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARFILE" EntityType="Self.ARFILE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONTACT" EntityType="Self.CONTACT" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="AR2ARCAT" Association="Self.AR2ARCAT">
+            <End Role="ARCAT" EntitySet="ARCAT" />
+            <End Role="ARFILE" EntitySet="ARFILE" />
+          </AssociationSet>
+          <AssociationSet Name="ARA2ADDB" Association="Self.ARA2ADDB">
+            <End Role="ADDRBOOK" EntitySet="ADDRBOOK" />
+            <End Role="ARADDRESS" EntitySet="ARADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="ARA2AR" Association="Self.ARA2AR">
+            <End Role="ARFILE" EntitySet="ARFILE" />
+            <End Role="ARADDRESS" EntitySet="ARADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="CT2ADDB" Association="Self.CT2ADDB">
+            <End Role="ADDRBOOK" EntitySet="ADDRBOOK" />
+            <End Role="CONTACT" EntitySet="CONTACT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Customer" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADDRBOOK">
+          <Key>
+            <PropertyRef Name="ADDB_KEY" />
+          </Key>
+          <Property Name="ADDB_KEY" Type="Int32" Nullable="false" />
+          <Property Name="ADDB_COMPANY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDB_BRANCH" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_TAX_ID" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="ADDB_ADDB_1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_ADDB_2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_ADDB_3" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_PROVINCE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_POST" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="ADDB_PHONE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_FAX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_WEBSITE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_BT" Type="Int32" Nullable="false" />
+          <Property Name="ADDB_STA" Type="Int32" Nullable="false" />
+          <Property Name="ADDB_REMARK" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_SEARCH" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_EMAIL" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_CONNECT" Type="Int32" />
+          <Property Name="ADDB_GPS_LAT_S" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_GPS_LONG_S" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ADDB_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARADDRESSes" Relationship="Self.ARA2ADDB" FromRole="ADDRBOOK" ToRole="ARADDRESS" />
+          <NavigationProperty Name="CONTACTs" Relationship="Customer.CT2ADDB" FromRole="ADDRBOOK" ToRole="CONTACT" />
+        </EntityType>
+        <EntityType Name="ARADDRESS">
+          <Key>
+            <PropertyRef Name="ARA_KEY" />
+          </Key>
+          <Property Name="ARA_KEY" Type="Int32" Nullable="false" />
+          <Property Name="ARA_AR" Type="Int32" Nullable="false" />
+          <Property Name="ARA_ADDB" Type="Int32" Nullable="false" />
+          <Property Name="ARA_DEFAULT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ARA_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ADDRBOOK" Relationship="Self.ARA2ADDB" FromRole="ARADDRESS" ToRole="ADDRBOOK" />
+          <NavigationProperty Name="ARFILE" Relationship="Self.ARA2AR" FromRole="ARADDRESS" ToRole="ARFILE" />
+        </EntityType>
+        <EntityType Name="ARCAT">
+          <Key>
+            <PropertyRef Name="ARCAT_KEY" />
+          </Key>
+          <Property Name="ARCAT_KEY" Type="Int32" Nullable="false" />
+          <Property Name="ARCAT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ARCAT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ARCAT_ACCESS" Type="Int16" Nullable="false" />
+          <Property Name="ARCAT_UDF_1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ARCAT_UDF_2" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ARCAT_UDF_3" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ARCAT_UDF_4" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ARCAT_UDF_5" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ARCAT_UDF_6" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ARCAT_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARFILEs" Relationship="Self.AR2ARCAT" FromRole="ARCAT" ToRole="ARFILE" />
+        </EntityType>
+        <EntityType Name="ARFILE">
+          <Key>
+            <PropertyRef Name="AR_KEY" />
+          </Key>
+          <Property Name="AR_KEY" Type="Int32" Nullable="false" />
+          <Property Name="AR_CODE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AR_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AR_ARCAT" Type="Int32" Nullable="false" />
+          <Property Name="AR_AC" Type="Int32" Nullable="false" />
+          <Property Name="AR_ENABLE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AR_ACCESS" Type="Int16" Nullable="false" />
+          <Property Name="AR_SLMNCODE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="AR_ARL" Type="Int32" Nullable="false" />
+          <Property Name="AR_ARTY" Type="Int32" Nullable="false" />
+          <Property Name="AR_ARG" Type="Int32" Nullable="false" />
+          <Property Name="AR_ARR" Type="Int32" Nullable="false" />
+          <Property Name="AR_ARGL" Type="Int32" Nullable="false" />
+          <Property Name="AR_DEPT" Type="Int32" Nullable="false" />
+          <Property Name="AR_REMARK" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AR_UDF_1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="AR_UDF_2" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="AR_UDF_3" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="AR_UDF_4" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="AR_UDF_5" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="AR_UDF_6" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="AR_MBCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AR_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARADDRESSes" Relationship="Self.ARA2AR" FromRole="ARFILE" ToRole="ARADDRESS" />
+          <NavigationProperty Name="ARCAT" Relationship="Self.AR2ARCAT" FromRole="ARFILE" ToRole="ARCAT" />
+        </EntityType>
+        <Association Name="ARA2ADDB">
+          <End Role="ADDRBOOK" Type="Self.ADDRBOOK" Multiplicity="1" />
+          <End Role="ARADDRESS" Type="Self.ARADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRBOOK">
+              <PropertyRef Name="ADDB_KEY" />
+            </Principal>
+            <Dependent Role="ARADDRESS">
+              <PropertyRef Name="ARA_ADDB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ARA2AR">
+          <End Role="ARFILE" Type="Self.ARFILE" Multiplicity="1" />
+          <End Role="ARADDRESS" Type="Self.ARADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARFILE">
+              <PropertyRef Name="AR_KEY" />
+            </Principal>
+            <Dependent Role="ARADDRESS">
+              <PropertyRef Name="ARA_AR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AR2ARCAT">
+          <End Role="ARCAT" Type="Self.ARCAT" Multiplicity="1" />
+          <End Role="ARFILE" Type="Self.ARFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARCAT">
+              <PropertyRef Name="ARCAT_KEY" />
+            </Principal>
+            <Dependent Role="ARFILE">
+              <PropertyRef Name="AR_ARCAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADDRBOOKs" EntityType="Self.ADDRBOOK" />
+          <EntitySet Name="ARADDRESSes" EntityType="Self.ARADDRESS" />
+          <EntitySet Name="ARCATs" EntityType="Self.ARCAT" />
+          <EntitySet Name="ARFILEs" EntityType="Self.ARFILE" />
+          <AssociationSet Name="ARA2ADDB" Association="Self.ARA2ADDB">
+            <End Role="ADDRBOOK" EntitySet="ADDRBOOKs" />
+            <End Role="ARADDRESS" EntitySet="ARADDRESSes" />
+          </AssociationSet>
+          <AssociationSet Name="ARA2AR" Association="Self.ARA2AR">
+            <End Role="ARFILE" EntitySet="ARFILEs" />
+            <End Role="ARADDRESS" EntitySet="ARADDRESSes" />
+          </AssociationSet>
+          <AssociationSet Name="AR2ARCAT" Association="Self.AR2ARCAT">
+            <End Role="ARCAT" EntitySet="ARCATs" />
+            <End Role="ARFILE" EntitySet="ARFILEs" />
+          </AssociationSet>
+          <EntitySet Name="CONTACTs" EntityType="Customer.CONTACT" />
+          <AssociationSet Name="CT2ADDB" Association="Customer.CT2ADDB">
+            <End Role="ADDRBOOK" EntitySet="ADDRBOOKs" />
+            <End Role="CONTACT" EntitySet="CONTACTs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CONTACT">
+          <Key>
+            <PropertyRef Name="CT_KEY" />
+          </Key>
+          <Property Name="CT_KEY" Type="Int32" Nullable="false" />
+          <Property Name="CT_INTL" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CT_NAME" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CT_SURNME" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CT_E_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CT_JOBTITLE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CT_EMAIL" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CT_MOBILE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CT_ADDB" Type="Int32" Nullable="false" />
+          <Property Name="CT_STA" Type="Int32" Nullable="false" />
+          <Property Name="CT_REMARK" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CT_CANEMAIL" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CT_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ADDRBOOK" Relationship="Customer.CT2ADDB" FromRole="CONTACT" ToRole="ADDRBOOK" />
+        </EntityType>
+        <Association Name="CT2ADDB">
+          <End Type="Customer.ADDRBOOK" Role="ADDRBOOK" Multiplicity="1" />
+          <End Type="Customer.CONTACT" Role="CONTACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRBOOK">
+              <PropertyRef Name="ADDB_KEY" />
+            </Principal>
+            <Dependent Role="CONTACT">
+              <PropertyRef Name="CT_ADDB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CustomerStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="ADDRBOOKs">
+            <EntityTypeMapping TypeName="Customer.ADDRBOOK">
+              <MappingFragment StoreEntitySet="ADDRBOOK">
+                <ScalarProperty Name="ADDB_KEY" ColumnName="ADDB_KEY" />
+                <ScalarProperty Name="ADDB_COMPANY" ColumnName="ADDB_COMPANY" />
+                <ScalarProperty Name="ADDB_BRANCH" ColumnName="ADDB_BRANCH" />
+                <ScalarProperty Name="ADDB_TAX_ID" ColumnName="ADDB_TAX_ID" />
+                <ScalarProperty Name="ADDB_ADDB_1" ColumnName="ADDB_ADDB_1" />
+                <ScalarProperty Name="ADDB_ADDB_2" ColumnName="ADDB_ADDB_2" />
+                <ScalarProperty Name="ADDB_ADDB_3" ColumnName="ADDB_ADDB_3" />
+                <ScalarProperty Name="ADDB_PROVINCE" ColumnName="ADDB_PROVINCE" />
+                <ScalarProperty Name="ADDB_POST" ColumnName="ADDB_POST" />
+                <ScalarProperty Name="ADDB_PHONE" ColumnName="ADDB_PHONE" />
+                <ScalarProperty Name="ADDB_FAX" ColumnName="ADDB_FAX" />
+                <ScalarProperty Name="ADDB_WEBSITE" ColumnName="ADDB_WEBSITE" />
+                <ScalarProperty Name="ADDB_BT" ColumnName="ADDB_BT" />
+                <ScalarProperty Name="ADDB_STA" ColumnName="ADDB_STA" />
+                <ScalarProperty Name="ADDB_REMARK" ColumnName="ADDB_REMARK" />
+                <ScalarProperty Name="ADDB_SEARCH" ColumnName="ADDB_SEARCH" />
+                <ScalarProperty Name="ADDB_EMAIL" ColumnName="ADDB_EMAIL" />
+                <ScalarProperty Name="ADDB_CONNECT" ColumnName="ADDB_CONNECT" />
+                <ScalarProperty Name="ADDB_GPS_LAT_S" ColumnName="ADDB_GPS_LAT_S" />
+                <ScalarProperty Name="ADDB_GPS_LONG_S" ColumnName="ADDB_GPS_LONG_S" />
+                <ScalarProperty Name="ADDB_LASTUPD" ColumnName="ADDB_LASTUPD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARADDRESSes">
+            <EntityTypeMapping TypeName="Customer.ARADDRESS">
+              <MappingFragment StoreEntitySet="ARADDRESS">
+                <ScalarProperty Name="ARA_KEY" ColumnName="ARA_KEY" />
+                <ScalarProperty Name="ARA_AR" ColumnName="ARA_AR" />
+                <ScalarProperty Name="ARA_ADDB" ColumnName="ARA_ADDB" />
+                <ScalarProperty Name="ARA_DEFAULT" ColumnName="ARA_DEFAULT" />
+                <ScalarProperty Name="ARA_LASTUPD" ColumnName="ARA_LASTUPD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARCATs">
+            <EntityTypeMapping TypeName="Customer.ARCAT">
+              <MappingFragment StoreEntitySet="ARCAT">
+                <ScalarProperty Name="ARCAT_KEY" ColumnName="ARCAT_KEY" />
+                <ScalarProperty Name="ARCAT_CODE" ColumnName="ARCAT_CODE" />
+                <ScalarProperty Name="ARCAT_NAME" ColumnName="ARCAT_NAME" />
+                <ScalarProperty Name="ARCAT_ACCESS" ColumnName="ARCAT_ACCESS" />
+                <ScalarProperty Name="ARCAT_UDF_1" ColumnName="ARCAT_UDF_1" />
+                <ScalarProperty Name="ARCAT_UDF_2" ColumnName="ARCAT_UDF_2" />
+                <ScalarProperty Name="ARCAT_UDF_3" ColumnName="ARCAT_UDF_3" />
+                <ScalarProperty Name="ARCAT_UDF_4" ColumnName="ARCAT_UDF_4" />
+                <ScalarProperty Name="ARCAT_UDF_5" ColumnName="ARCAT_UDF_5" />
+                <ScalarProperty Name="ARCAT_UDF_6" ColumnName="ARCAT_UDF_6" />
+                <ScalarProperty Name="ARCAT_LASTUPD" ColumnName="ARCAT_LASTUPD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARFILEs">
+            <EntityTypeMapping TypeName="Customer.ARFILE">
+              <MappingFragment StoreEntitySet="ARFILE">
+                <ScalarProperty Name="AR_KEY" ColumnName="AR_KEY" />
+                <ScalarProperty Name="AR_CODE" ColumnName="AR_CODE" />
+                <ScalarProperty Name="AR_NAME" ColumnName="AR_NAME" />
+                <ScalarProperty Name="AR_ARCAT" ColumnName="AR_ARCAT" />
+                <ScalarProperty Name="AR_AC" ColumnName="AR_AC" />
+                <ScalarProperty Name="AR_ENABLE" ColumnName="AR_ENABLE" />
+                <ScalarProperty Name="AR_ACCESS" ColumnName="AR_ACCESS" />
+                <ScalarProperty Name="AR_SLMNCODE" ColumnName="AR_SLMNCODE" />
+                <ScalarProperty Name="AR_ARL" ColumnName="AR_ARL" />
+                <ScalarProperty Name="AR_ARTY" ColumnName="AR_ARTY" />
+                <ScalarProperty Name="AR_ARG" ColumnName="AR_ARG" />
+                <ScalarProperty Name="AR_ARR" ColumnName="AR_ARR" />
+                <ScalarProperty Name="AR_ARGL" ColumnName="AR_ARGL" />
+                <ScalarProperty Name="AR_DEPT" ColumnName="AR_DEPT" />
+                <ScalarProperty Name="AR_REMARK" ColumnName="AR_REMARK" />
+                <ScalarProperty Name="AR_UDF_1" ColumnName="AR_UDF_1" />
+                <ScalarProperty Name="AR_UDF_2" ColumnName="AR_UDF_2" />
+                <ScalarProperty Name="AR_UDF_3" ColumnName="AR_UDF_3" />
+                <ScalarProperty Name="AR_UDF_4" ColumnName="AR_UDF_4" />
+                <ScalarProperty Name="AR_UDF_5" ColumnName="AR_UDF_5" />
+                <ScalarProperty Name="AR_UDF_6" ColumnName="AR_UDF_6" />
+                <ScalarProperty Name="AR_MBCODE" ColumnName="AR_MBCODE" />
+                <ScalarProperty Name="AR_LASTUPD" ColumnName="AR_LASTUPD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTACTs">
+            <EntityTypeMapping TypeName="Customer.CONTACT">
+              <MappingFragment StoreEntitySet="CONTACT">
+                <ScalarProperty Name="CT_LASTUPD" ColumnName="CT_LASTUPD" />
+                <ScalarProperty Name="CT_CANEMAIL" ColumnName="CT_CANEMAIL" />
+                <ScalarProperty Name="CT_REMARK" ColumnName="CT_REMARK" />
+                <ScalarProperty Name="CT_STA" ColumnName="CT_STA" />
+                <ScalarProperty Name="CT_ADDB" ColumnName="CT_ADDB" />
+                <ScalarProperty Name="CT_MOBILE" ColumnName="CT_MOBILE" />
+                <ScalarProperty Name="CT_EMAIL" ColumnName="CT_EMAIL" />
+                <ScalarProperty Name="CT_JOBTITLE" ColumnName="CT_JOBTITLE" />
+                <ScalarProperty Name="CT_E_NAME" ColumnName="CT_E_NAME" />
+                <ScalarProperty Name="CT_SURNME" ColumnName="CT_SURNME" />
+                <ScalarProperty Name="CT_NAME" ColumnName="CT_NAME" />
+                <ScalarProperty Name="CT_INTL" ColumnName="CT_INTL" />
+                <ScalarProperty Name="CT_KEY" ColumnName="CT_KEY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

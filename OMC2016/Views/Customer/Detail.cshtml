@@ -1,0 +1,35 @@
+﻿@using OMC2016.Models.Customer;
+@model dynamic
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel-heading">
+    <button type="button" class="btn btn-outline btn-primary" onclick="window.location='@Request.UrlReferrer.AbsoluteUri'">Back</button>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-user fa-fw"></i> Customer Detail</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#Info" data-toggle="tab">รายละเอียด</a></li>
+            <li><a data-toggle="tab" href="#Contact">ผู้ติดต่อ</a></li>
+            <li><a data-toggle="tab" href="#Map">แผนที่</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="Info" class="tab-pane fade in active">
+                @{Html.RenderPartial("_CustomerInfo",(IEnumerable<CustomerInfo>)Model.CustomerInfo);}
+            </div>
+            <div class="tab-pane fade" id="Contact">
+                @{Html.RenderPartial("_ContactList", (IEnumerable<ContactList>)Model.ContactList);}
+            </div>
+            <div class="tab-pane fade" id="Map">
+                Map
+            </div>
+        </div>
+    </div>
+</div>
+
