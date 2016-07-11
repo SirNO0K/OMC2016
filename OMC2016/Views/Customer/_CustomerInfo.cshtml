@@ -4,39 +4,52 @@
     <br />
     <div class="container-fluid">
 
-        <div class="form-group">
-            @Html.Label("รหัสลูกค้า : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
-            <div class="col-md-1">@Html.Label("", _Info.CODE)</div>
+        <ul>
+            <li>
+                @Html.Label("รหัสลูกค้า", htmlAttributes: new { @class = "text-right", @style = "text-decoration: underline" })
+                @Html.Label("", _Info.CODE)
+            </li>
+        </ul>
+        <ul>
+            <li>
+                @Html.Label("ชื่อลูกค้า", htmlAttributes: new { @class = "text-right", @style = "text-decoration: underline" })
+                @Html.Label("", _Info.NAME)
+            </li>
+        </ul>
+        @*<div class="form-group">
+                @Html.Label("รหัสลูกค้า", htmlAttributes: new { @class = "col-md-1 text-right", @style = "text-decoration: underline" })
+                <div class="col-md-1">@Html.Label("", _Info.CODE)</div>
 
-            @Html.Label("ชื่อลูกค้า : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
-            <div class="col-md-9">@Html.Label("", _Info.NAME)</div>
-        </div>
+                @Html.Label("ชื่อลูกค้า", htmlAttributes: new { @class = "col-md-1", @style = "text-decoration: underline" })
+                <div class="col-md-9">@Html.Label("", _Info.NAME)</div>
+            </div>*@
 
-        <div class="form-group">
-            @Html.Label("ที่อยู่ : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
-            <div class="col-md-11">@Html.Label("", _Info.ADDB1)</div>
+        @*<div class="form-group">
+                @Html.Label("ที่อยู่", htmlAttributes: new { @class = " col-md-1 text-right", @style = "text-decoration: underline" })
+                <div class="col-md-11">@Html.Label("", _Info.ADDB1)</div>
 
-            <div class="col-md-1"> </div>
-            <div class="col-md-11">@Html.Label("", _Info.ADDB2 + " " + _Info.ADDB3)</div>
+                <div class="col-md-1"> </div>
+                <div class="col-md-11">@Html.Label("", _Info.ADDB2 + " " + _Info.ADDB3)</div>
 
-            <div class="col-md-1"></div>
-            <div class="col-md-11">@Html.Label("", _Info.PROVINCE + " " + _Info.POST)</div>
-        </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-11">@Html.Label("", _Info.PROVINCE + " " + _Info.POST)</div>
+            </div>*@
 
-        <div class="form-group">
-            @Html.Label("โทรศัพท์ : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
-            <div class="col-md-11">@Html.Label("", _Info.PHONE)</div>
+        @*<div class="form-group">
+                @Html.Label("โทรศัพท์ : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
+                <div class="col-md-11">@Html.Label("", _Info.PHONE)</div>
 
-            @Html.Label("แฟกซ์ : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
-            <div class="col-md-11">@Html.Label("", _Info.FAX)</div>
+                @Html.Label("แฟกซ์ : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
+                <div class="col-md-11">@Html.Label("", _Info.FAX)</div>
 
-            @Html.Label("E-Mail : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
-            <div class="col-md-11">@Html.Label("", _Info.EMAIL)</div>
+                @Html.Label("E-Mail : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
+                <div class="col-md-11">@Html.Label("", _Info.EMAIL)</div>
 
-            @Html.Label("WEB : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
-            <div class="col-md-10">@Html.Label("", _Info.WEB)</div>
-        </div>
+                @Html.Label("WEB : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
+                <div class="col-md-10">@Html.Label("", _Info.WEB)</div>
+            </div>*@
 
 
     </div>
+
 }
