@@ -580,12 +580,12 @@
     <Content Include="Views\Shared\_Menubar.cshtml" />
     <Content Include="Views\Authentication\Login.cshtml" />
     <Content Include="Views\Authentication\ChangePassword.cshtml" />
-    <None Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Administrator\Config.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Customer\Detail.cshtml" />
     <Content Include="Views\Customer\_CustomerInfo.cshtml" />
     <Content Include="Views\Customer\_ContactList.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

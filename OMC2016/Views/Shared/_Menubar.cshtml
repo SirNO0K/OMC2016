@@ -9,7 +9,13 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <!-- /.navbar-Top-Left -->
     <div class="navbar-header">
-        @Html.ActionLink("Oldmoon Software Management", "Index", new { controller = "Home" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("OMC2016", "Index", new { controller = "Home" }, new { @class = "navbar-brand" })
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
     </div>
 
     <!-- /.navbar-Top-Right -->
@@ -166,11 +172,11 @@
                         {
                             if (item.MenuController == null)
                             {
-                <li><a href="#"> <i class="@item.MenuImage"></i> @item.MenuNameOption</a></li>
+                                <li><a href="#"> <i class="@item.MenuImage"></i> @item.MenuNameOption</a></li>
                             }
                             else
                             {
-                <li><a href="@Url.Action(item.MenuAction, item.MenuController)"><i class="@item.MenuImage"></i> @item.MenuNameOption</a></li>
+                                <li><a href="@Url.Action(item.MenuAction, item.MenuController)"><i class="@item.MenuImage"></i> @item.MenuNameOption</a></li>
                             }
                         }
                         //Show My Department
@@ -180,11 +186,11 @@
                             {
                                 if (item.MenuController == null)
                                 {
-                <li><a href="#"> <i class="@item.MenuImage"></i> @item.MenuNameOption</a></li>
+                                    <li><a href="#"> <i class="@item.MenuImage"></i> @item.MenuNameOption</a></li>
                                 }
                                 else
                                 {
-                <li><a href="@Url.Action(item.MenuAction, item.MenuController)"><i class="@item.MenuImage"></i> @item.MenuNameOption</a></li>
+                                    <li><a href="@Url.Action(item.MenuAction, item.MenuController)"><i class="@item.MenuImage"></i> @item.MenuNameOption</a></li>
                                 }
                             }
                         }
@@ -193,43 +199,43 @@
                     {
                         if (item.MenuIsParrent == true && item.MenuParrentID == 0 && DepID != "0")
                         {
-                <li>
-                    @*level2*@
-                    <a href="#"><i class="@item.MenuImage"></i> @item.MenuNameOption<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        @foreach (var Level2 in Model.Where(p => p.MenuParrentID == item.MenuID).OrderBy(o => o.MenuNameOption))
+                            <li>
+                                @*level2*@
+                                <a href="#"><i class="@item.MenuImage"></i> @item.MenuNameOption<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    @foreach (var Level2 in Model.Where(p => p.MenuParrentID == item.MenuID).OrderBy(o => o.MenuNameOption))
                                     {
                                         if (DepID == "4")
                                         {
                                             if (Level2.MenuIsParrent == true)
                                             {
-                        <li>
-                            @*level3*@
-                            <a href="#">@Level2.MenuNameOption <span class="fa arrow"></span></a>
-                            <ul class="nav nav-third-level">
-                                @foreach (var Level3 in Model.Where(p => p.MenuParrentID == Level2.MenuID).OrderBy(o => o.MenuNameOption))
+                                                <li>
+                                                    @*level3*@
+                                                    <a href="#">@Level2.MenuNameOption <span class="fa arrow"></span></a>
+                                                    <ul class="nav nav-third-level">
+                                                        @foreach (var Level3 in Model.Where(p => p.MenuParrentID == Level2.MenuID).OrderBy(o => o.MenuNameOption))
                                                         {
                                                             if (Level3.MenuController == null)
                                                             {
-                                            <li><a href="#">@Level3.MenuNameOption</a></li>
+                                                                <li><a href="#">@Level3.MenuNameOption</a></li>
                                                             }
                                                             else
                                                             {
-                                            <li><a href="@Url.Action(Level3.MenuAction, Level3.MenuController)">@Level3.MenuNameOption</a></li>
+                                                                <li><a href="@Url.Action(Level3.MenuAction, Level3.MenuController)">@Level3.MenuNameOption</a></li>
                                                             }
                                                         }
-                            </ul>
-                        </li>
+                                                    </ul>
+                                                </li>
                                             }
                                             else
                                             {
                                                 if (Level2.MenuController == null)
                                                 {
-                        <li><a href="#">@Level2.MenuNameOption</a></li>
+                                                    <li><a href="#">@Level2.MenuNameOption</a></li>
                                                 }
                                                 else
                                                 {
-                        <li><a href="@Url.Action(Level2.MenuAction, Level2.MenuController)">@Level2.MenuNameOption</a></li>
+                                                    <li><a href="@Url.Action(Level2.MenuAction, Level2.MenuController)">@Level2.MenuNameOption</a></li>
                                                 }
                                             }
                                         }
@@ -237,45 +243,46 @@
                                         {
                                             if (Level2.MenuIsParrent == true)
                                             {
-                        <li>
-                            @*level3*@
-                            <a href="#">@Level2.MenuNameOption <span class="fa arrow"></span></a>
-                            <ul class="nav nav-third-level">
-                                @foreach (var Level3 in Model.Where(p => p.MenuParrentID == Level2.MenuID).OrderBy(o => o.MenuNameOption))
+                                                <li>
+                                                    @*level3*@
+                                                    <a href="#">@Level2.MenuNameOption <span class="fa arrow"></span></a>
+                                                    <ul class="nav nav-third-level">
+                                                        @foreach (var Level3 in Model.Where(p => p.MenuParrentID == Level2.MenuID).OrderBy(o => o.MenuNameOption))
                                                         {
                                                             if (Level3.MenuController == null)
                                                             {
-                                            <li><a href="#">@Level3.MenuNameOption</a></li>
+                                                                <li><a href="#">@Level3.MenuNameOption</a></li>
                                                             }
                                                             else
                                                             {
-                                            <li><a href="@Url.Action(Level3.MenuAction, Level3.MenuController)">@Level3.MenuNameOption</a></li>
+                                                                <li><a href="@Url.Action(Level3.MenuAction, Level3.MenuController)">@Level3.MenuNameOption</a></li>
                                                             }
                                                         }
-                            </ul>
-                        </li>
+                                                    </ul>
+                                                </li>
                                             }
                                             else
                                             {
                                                 if (Level2.MenuController == null)
                                                 {
-                        <li><a href="#">@Level2.MenuNameOption</a></li>
+                                                    <li><a href="#">@Level2.MenuNameOption</a></li>
                                                 }
                                                 else
                                                 {
-                        <li><a href="@Url.Action(Level2.MenuAction, Level2.MenuController)">@Level2.MenuNameOption</a></li>
+                                                    <li><a href="@Url.Action(Level2.MenuAction, Level2.MenuController)">@Level2.MenuNameOption</a></li>
                                                 }
                                             }
                                         }
                                     }
-                    </ul>
-                </li>
+                                </ul>
+                            </li>
                         }
                     }
                 }
             </ul>
         </div>
     </div>
+
     <!-- End MenuBar -->
 
 </nav>

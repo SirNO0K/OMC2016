@@ -1,53 +1,49 @@
 ﻿@model IEnumerable<OMC2016.Models.Customer.CustomerInfo>
+<style>
+    .lbTitle {
+        text-align: right;
+        text-decoration: underline;
+    }
+
+    .lbDetail {
+        font-weight: bold;
+    }
+</style>
 @foreach (var _Info in Model)
 {
     <br />
     <div class="container-fluid">
 
-        <ul>
-            <li>
-                @Html.Label("รหัสลูกค้า", htmlAttributes: new { @class = "text-right", @style = "text-decoration: underline" })
-                @Html.Label("", _Info.CODE)
-            </li>
-        </ul>
-        <ul>
-            <li>
-                @Html.Label("ชื่อลูกค้า", htmlAttributes: new { @class = "text-right", @style = "text-decoration: underline" })
-                @Html.Label("", _Info.NAME)
-            </li>
-        </ul>
-        @*<div class="form-group">
-                @Html.Label("รหัสลูกค้า", htmlAttributes: new { @class = "col-md-1 text-right", @style = "text-decoration: underline" })
-                <div class="col-md-1">@Html.Label("", _Info.CODE)</div>
+        <!-- รหัส - ชื่อ -->
+        <div class="form-group">
+            @Html.Label("รหัสลูกค้า", htmlAttributes: new { @class = "col-md-1 lbTitle" })
+            @Html.Label("", _Info.CODE, htmlAttributes: new { @class = "col-md-1 lbDetail" })
 
-                @Html.Label("ชื่อลูกค้า", htmlAttributes: new { @class = "col-md-1", @style = "text-decoration: underline" })
-                <div class="col-md-9">@Html.Label("", _Info.NAME)</div>
-            </div>*@
+            @Html.Label("ชื่อลูกค้า", htmlAttributes: new { @class = "col-md-1 lbTitle" })
+            @Html.Label("", _Info.NAME, htmlAttributes: new { @class = "col-md-9 lbDetail" })
 
-        @*<div class="form-group">
-                @Html.Label("ที่อยู่", htmlAttributes: new { @class = " col-md-1 text-right", @style = "text-decoration: underline" })
-                <div class="col-md-11">@Html.Label("", _Info.ADDB1)</div>
+        </div>
+        <!-- ที่อยู่ -->
+        <div class="form-group">
+            @Html.Label("ที่อยู่", htmlAttributes: new { @class = "col-md-1 lbTitle" })
+            @Html.Label("", _Info.ADDB1, htmlAttributes: new { @class = "col-md-11 lbDetail" })
+            @Html.Label("", _Info.ADDB2 + " " + _Info.ADDB3, htmlAttributes: new { @class = "col-md-offset-1 col-md-11 lbDetail" })
+            @Html.Label("", _Info.PROVINCE + " " + _Info.POST, htmlAttributes: new { @class = "col-md-offset-1 col-md-11 lbDetail" })
+        </div>
 
-                <div class="col-md-1"> </div>
-                <div class="col-md-11">@Html.Label("", _Info.ADDB2 + " " + _Info.ADDB3)</div>
+        <div class="form-group">
+            @Html.Label("โทรศัพท์ : ", htmlAttributes: new { @class = "col-md-1 lbTitle" })
+            @Html.Label("", _Info.PHONE, htmlAttributes: new { @class = "col-md-11 lbDetail" })
 
-                <div class="col-md-1"></div>
-                <div class="col-md-11">@Html.Label("", _Info.PROVINCE + " " + _Info.POST)</div>
-            </div>*@
+            @Html.Label("แฟกซ์ : ", htmlAttributes: new { @class = "col-md-1 lbTitle" })
+            @Html.Label("", _Info.FAX, htmlAttributes: new { @class = "col-md-11 lbDetail" })
 
-        @*<div class="form-group">
-                @Html.Label("โทรศัพท์ : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
-                <div class="col-md-11">@Html.Label("", _Info.PHONE)</div>
+            @Html.Label("E-Mail : ", htmlAttributes: new { @class = "col-md-1 lbTitle" })
+            @Html.Label("", _Info.EMAIL, htmlAttributes: new { @class = "col-md-11 lbDetail" })
 
-                @Html.Label("แฟกซ์ : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
-                <div class="col-md-11">@Html.Label("", _Info.FAX)</div>
-
-                @Html.Label("E-Mail : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
-                <div class="col-md-11">@Html.Label("", _Info.EMAIL)</div>
-
-                @Html.Label("WEB : ", htmlAttributes: new { @class = "control-label col-md-1 text-right" })
-                <div class="col-md-10">@Html.Label("", _Info.WEB)</div>
-            </div>*@
+            @Html.Label("WEB : ", htmlAttributes: new { @class = "col-md-1 lbTitle" })
+            @Html.Label("", _Info.WEB, htmlAttributes: new { @class = "col-md-11 lbDetail" })
+        </div>
 
 
     </div>
