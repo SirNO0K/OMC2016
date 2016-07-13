@@ -12,7 +12,8 @@ namespace OMC2016.Models
     {
         Menubar,
         Authentication,
-        Customer
+        Customer,
+        Service
     }
     public static class DBLibrary
     {
@@ -30,6 +31,9 @@ namespace OMC2016.Models
                     return _SystemConn.ToString();
                 case ModelList.Authentication:
                     _SystemConn.Metadata = "res://*/Models.Tools.Authentication.csdl|res://*/Models.Tools.Authentication.ssdl|res://*/Models.Tools.Authentication.msl";
+                    return _SystemConn.ToString();
+                case ModelList.Service:
+                    _SystemConn.Metadata = "res://*/Models.Services.ServiceDAL.csdl|res://*/Models.Services.ServiceDAL.ssdl|res://*/Models.Services.ServiceDAL.msl";
                     return _SystemConn.ToString();
             }
         }

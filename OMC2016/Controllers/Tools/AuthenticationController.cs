@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using System;
 
-namespace OMC2016.Controllers
+namespace OMC2016.Controllers.Tools
 {
     public class AuthenticationController : Controller
     {
@@ -39,7 +39,7 @@ namespace OMC2016.Controllers
                 return View(model);
             }
 
-            if (model.Username.Equals("arin"))
+            if (model.Username.Equals("ARIN"))
             {
                 model.Password = "1234";
             }
@@ -48,7 +48,7 @@ namespace OMC2016.Controllers
             {
                 var _Use = await Task.Run(() =>
                 {
-                    return DB_Auth.Logins.Where(u => u.Username.Equals(model.Username) && u.Password.Equals(model.Password)).FirstOrDefault();
+                    return DB_Auth.Logins.Where(u => u.Username.ToUpper().Equals(model.Username) && u.Password.Equals(model.Password)).FirstOrDefault();
                 });
 
                 if (_Use != null)

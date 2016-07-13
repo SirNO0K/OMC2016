@@ -294,6 +294,16 @@
       <DependentUpon>Customer.edmx</DependentUpon>
       <LastGenOutput>Customer.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Services\ServiceDAL.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ServiceDAL.edmx</DependentUpon>
+      <LastGenOutput>ServiceDAL.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Services\ServiceDAL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ServiceDAL.edmx</DependentUpon>
+      <LastGenOutput>ServiceDAL.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Tools\Authentication.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Authentication.edmx</DependentUpon>
@@ -348,6 +358,13 @@
     </EntityDeploy>
     <Content Include="Models\Customer\Customer.edmx.diagram">
       <DependentUpon>Customer.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Services\ServiceDAL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ServiceDAL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Services\ServiceDAL.edmx.diagram">
+      <DependentUpon>ServiceDAL.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\OMC2016.pubxml" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
@@ -473,12 +490,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AdministratorController.cs" />
-    <Compile Include="Controllers\AuthenticationController.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\Service\ctlService.cs" />
+    <Compile Include="Controllers\Tools\AdministratorController.cs" />
+    <Compile Include="Controllers\Tools\AuthenticationController.cs" />
+    <Compile Include="Controllers\Customer\CustomerController.cs" />
     <Compile Include="Controllers\Customer\ctlCustomer.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\Tools\HomeController.cs" />
+    <Compile Include="Controllers\Tools\MenuController.cs" />
+    <Compile Include="Controllers\Service\ServiceController.cs" />
     <Compile Include="Controllers\Tools\ctlMaster.cs" />
     <Compile Include="Controllers\Tools\ctlPublicFunction.cs" />
     <Compile Include="Filters\AuthActionFilter.cs" />
@@ -520,6 +539,25 @@
     <Compile Include="Models\DBLibrary.cs" />
     <Compile Include="Models\Customer\CustomerInfo.cs" />
     <Compile Include="Models\Customer\CustomerList.cs" />
+    <Compile Include="Models\Services\MachineList.cs" />
+    <Compile Include="Models\Services\MIX.cs">
+      <DependentUpon>ServiceDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Services\ServiceDAL.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceDAL.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Services\ServiceDAL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Services\ServiceDAL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceDAL.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Tools\ApplicationConfig.cs" />
     <Compile Include="Models\Tools\Authentication.Context.cs">
       <AutoGen>True</AutoGen>
@@ -586,6 +624,7 @@
     <Content Include="Views\Customer\_CustomerInfo.cshtml" />
     <Content Include="Views\Customer\_ContactList.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Service\MachineSearch.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -599,7 +638,6 @@
     <Folder Include="Content\morrisjs\less\" />
     <Folder Include="Content\morrisjs\lib\" />
     <Folder Include="Content\morrisjs\spec\" />
-    <Folder Include="Models\Master\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

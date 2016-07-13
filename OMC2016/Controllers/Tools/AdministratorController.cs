@@ -7,7 +7,7 @@ using OMC2016.Models.Tools;
 using OMC2016.Filters;
 using System.Transactions;
 
-namespace OMC2016.Controllers
+namespace OMC2016.Controllers.Tools
 {
     public class AdministratorController : Controller
     {

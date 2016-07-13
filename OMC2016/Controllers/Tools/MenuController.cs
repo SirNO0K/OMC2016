@@ -7,7 +7,7 @@ using OMC2016.Models.Tools;
 using System.Threading.Tasks;
 using System.Collections;
 
-namespace OMC2016.Controllers
+namespace OMC2016.Controllers.Tools
 {
     public class MenuController : Controller
     {

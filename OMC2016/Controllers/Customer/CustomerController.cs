@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Newtonsoft.Json;
+﻿using System.Web.Mvc;
 using System.Threading.Tasks;
-using OMC2016.Controllers.Customer;
 using System.Dynamic;
-using OMC2016.Models.Customer;
 
-namespace OMC2016.Controllers
+namespace OMC2016.Controllers.Customer
 {
     public class CustomerController : Controller
     {
