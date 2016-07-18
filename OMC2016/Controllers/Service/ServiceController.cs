@@ -10,6 +10,7 @@ namespace OMC2016.Controllers.Service
         {
             return await Task.Run(() =>
             {
+                ctlService.UpdateWarrantyExpire();
                 return View(ctlService.GetMachineList().Result);
             });
 

@@ -4,28 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ServiceDAL.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'OMC-ASP.dbo.MIX' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+    <Schema Namespace="ServiceDAL.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="MIX">
           <Key>
-            <PropertyRef Name="productid" />
-            <PropertyRef Name="isdelete" />
-            <PropertyRef Name="isexpire" />
-            <PropertyRef Name="isnewproduct" />
-            <PropertyRef Name="istransfer" />
             <PropertyRef Name="mix_id" />
             <PropertyRef Name="type" />
             <PropertyRef Name="s_no" />
             <PropertyRef Name="cus_na" />
-            <PropertyRef Name="custid" />
-            <PropertyRef Name="qtysale" />
-            <PropertyRef Name="yearsale" />
-            <PropertyRef Name="monthsale" />
-            <PropertyRef Name="warrantyterm" />
-            <PropertyRef Name="monthfactor" />
-            <PropertyRef Name="yearexpire" />
-            <PropertyRef Name="monthexpire" />
           </Key>
           <Property Name="productid" Type="nvarchar" MaxLength="4" Nullable="false" />
           <Property Name="isdelete" Type="bit" Nullable="false" />
@@ -55,72 +40,32 @@ warning 6002: The table/view 'OMC-ASP.dbo.MIX' does not have a primary key defin
           <Property Name="modidt" Type="datetime" />
         </EntityType>
         <EntityContainer Name="ServiceDALStoreContainer">
-          <EntitySet Name="MIX" EntityType="Self.MIX" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [MIX].[productid] AS [productid], 
-    [MIX].[isdelete] AS [isdelete], 
-    [MIX].[isexpire] AS [isexpire], 
-    [MIX].[isnewproduct] AS [isnewproduct], 
-    [MIX].[istransfer] AS [istransfer], 
-    [MIX].[transferdate] AS [transferdate], 
-    [MIX].[mix_id] AS [mix_id], 
-    [MIX].[type] AS [type], 
-    [MIX].[s_no] AS [s_no], 
-    [MIX].[cus_na] AS [cus_na], 
-    [MIX].[custid] AS [custid], 
-    [MIX].[acccustcode] AS [acccustcode], 
-    [MIX].[qtysale] AS [qtysale], 
-    [MIX].[sale_date] AS [sale_date], 
-    [MIX].[yearsale] AS [yearsale], 
-    [MIX].[monthsale] AS [monthsale], 
-    [MIX].[warrantyterm] AS [warrantyterm], 
-    [MIX].[monthfactor] AS [monthfactor], 
-    [MIX].[exp] AS [exp], 
-    [MIX].[yearexpire] AS [yearexpire], 
-    [MIX].[monthexpire] AS [monthexpire], 
-    [MIX].[remark] AS [remark], 
-    [MIX].[audituser] AS [audituser], 
-    [MIX].[auditdt] AS [auditdt], 
-    [MIX].[modiuser] AS [modiuser], 
-    [MIX].[modidt] AS [modidt]
-    FROM [dbo].[MIX] AS [MIX]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="MIX" EntityType="Self.MIX" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ServiceDAL" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MIXes" EntityType="ServiceDAL.MIX" />
+        </EntityContainer>
         <EntityType Name="MIX">
           <Key>
-            <PropertyRef Name="productid" />
-            <PropertyRef Name="isdelete" />
-            <PropertyRef Name="isexpire" />
-            <PropertyRef Name="isnewproduct" />
-            <PropertyRef Name="istransfer" />
             <PropertyRef Name="mix_id" />
             <PropertyRef Name="type" />
             <PropertyRef Name="s_no" />
             <PropertyRef Name="cus_na" />
-            <PropertyRef Name="custid" />
-            <PropertyRef Name="qtysale" />
-            <PropertyRef Name="yearsale" />
-            <PropertyRef Name="monthsale" />
-            <PropertyRef Name="warrantyterm" />
-            <PropertyRef Name="monthfactor" />
-            <PropertyRef Name="yearexpire" />
-            <PropertyRef Name="monthexpire" />
           </Key>
-          <Property Name="productid" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="productid" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="isdelete" Type="Boolean" Nullable="false" />
           <Property Name="isexpire" Type="Boolean" Nullable="false" />
           <Property Name="isnewproduct" Type="Boolean" Nullable="false" />
           <Property Name="istransfer" Type="Boolean" Nullable="false" />
           <Property Name="transferdate" Type="DateTime" Precision="3" />
           <Property Name="mix_id" Type="Int32" Nullable="false" />
-          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="s_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="cus_na" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="s_no" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cus_na" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="custid" Type="Int32" Nullable="false" />
           <Property Name="acccustcode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="qtysale" Type="Int32" Nullable="false" />
@@ -138,9 +83,6 @@ warning 6002: The table/view 'OMC-ASP.dbo.MIX' does not have a primary key defin
           <Property Name="modiuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="modidt" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="MIXes" EntityType="Self.MIX" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -150,32 +92,32 @@ warning 6002: The table/view 'OMC-ASP.dbo.MIX' does not have a primary key defin
           <EntitySetMapping Name="MIXes">
             <EntityTypeMapping TypeName="ServiceDAL.MIX">
               <MappingFragment StoreEntitySet="MIX">
-                <ScalarProperty Name="productid" ColumnName="productid" />
-                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
-                <ScalarProperty Name="isexpire" ColumnName="isexpire" />
-                <ScalarProperty Name="isnewproduct" ColumnName="isnewproduct" />
-                <ScalarProperty Name="istransfer" ColumnName="istransfer" />
-                <ScalarProperty Name="transferdate" ColumnName="transferdate" />
-                <ScalarProperty Name="mix_id" ColumnName="mix_id" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="s_no" ColumnName="s_no" />
-                <ScalarProperty Name="cus_na" ColumnName="cus_na" />
-                <ScalarProperty Name="custid" ColumnName="custid" />
-                <ScalarProperty Name="acccustcode" ColumnName="acccustcode" />
-                <ScalarProperty Name="qtysale" ColumnName="qtysale" />
-                <ScalarProperty Name="sale_date" ColumnName="sale_date" />
-                <ScalarProperty Name="yearsale" ColumnName="yearsale" />
-                <ScalarProperty Name="monthsale" ColumnName="monthsale" />
-                <ScalarProperty Name="warrantyterm" ColumnName="warrantyterm" />
-                <ScalarProperty Name="monthfactor" ColumnName="monthfactor" />
-                <ScalarProperty Name="exp" ColumnName="exp" />
-                <ScalarProperty Name="yearexpire" ColumnName="yearexpire" />
-                <ScalarProperty Name="monthexpire" ColumnName="monthexpire" />
-                <ScalarProperty Name="remark" ColumnName="remark" />
-                <ScalarProperty Name="audituser" ColumnName="audituser" />
-                <ScalarProperty Name="auditdt" ColumnName="auditdt" />
-                <ScalarProperty Name="modiuser" ColumnName="modiuser" />
                 <ScalarProperty Name="modidt" ColumnName="modidt" />
+                <ScalarProperty Name="modiuser" ColumnName="modiuser" />
+                <ScalarProperty Name="auditdt" ColumnName="auditdt" />
+                <ScalarProperty Name="audituser" ColumnName="audituser" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="monthexpire" ColumnName="monthexpire" />
+                <ScalarProperty Name="yearexpire" ColumnName="yearexpire" />
+                <ScalarProperty Name="exp" ColumnName="exp" />
+                <ScalarProperty Name="monthfactor" ColumnName="monthfactor" />
+                <ScalarProperty Name="warrantyterm" ColumnName="warrantyterm" />
+                <ScalarProperty Name="monthsale" ColumnName="monthsale" />
+                <ScalarProperty Name="yearsale" ColumnName="yearsale" />
+                <ScalarProperty Name="sale_date" ColumnName="sale_date" />
+                <ScalarProperty Name="qtysale" ColumnName="qtysale" />
+                <ScalarProperty Name="acccustcode" ColumnName="acccustcode" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="cus_na" ColumnName="cus_na" />
+                <ScalarProperty Name="s_no" ColumnName="s_no" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="mix_id" ColumnName="mix_id" />
+                <ScalarProperty Name="transferdate" ColumnName="transferdate" />
+                <ScalarProperty Name="istransfer" ColumnName="istransfer" />
+                <ScalarProperty Name="isnewproduct" ColumnName="isnewproduct" />
+                <ScalarProperty Name="isexpire" ColumnName="isexpire" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

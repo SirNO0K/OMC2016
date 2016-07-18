@@ -44,7 +44,7 @@ namespace OMC2016.Controllers.Tools
                     //ModelState.AddModelError("", "บันทึกข้อมูลไม่สำเร็จ");
                     ModelState.AddModelError("", ex.ToString());
                 }
-            }
+            }            
             return View("Config", _Model);
         }
     }

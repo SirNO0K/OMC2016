@@ -13,11 +13,10 @@ namespace OMC2016.Controllers.Service
     {
         public static async Task<IList> GetMachineList()
         {
+            ServiceDAL DB_Machine = new ServiceDAL();
+            CustomerDAL DB_Customer = new CustomerDAL();
             return await Task<IList>.Run(() =>
             {
-                ServiceDAL DB_Machine = new ServiceDAL();
-                CustomerDAL DB_Customer = new CustomerDAL();
-
                 var _Machine = DB_Machine.MIXes.ToList();
                 var _Customer = DB_Customer.ARFILEs.ToList();
 
@@ -28,16 +27,27 @@ namespace OMC2016.Controllers.Service
                         select new MachineList
                         {
                             MIXID = _MIX.mix_id,
-                            ISEXP = _MIX.isexpire,
+                            ISEXP = ((_MIX.isexpire) ? "OUT" : "IN"),
                             CODE = _ARFILE.AR_CODE,
                             NAME = _ARFILE.AR_NAME,
                             TYPE = _MIX.type,
                             SN = _MIX.s_no,
-                            SALE_DATE = _MIX.sale_date.Value.Date,
-                            EXP_DATE = _MIX.exp.Value.Date,
-                            ISTRANSFER = _MIX.istransfer,
+                            SALE_DATE = _MIX.sale_date.Value.Date.ToShortDateString(),
+                            EXP_DATE = _MIX.exp.Value.Date.ToShortDateString(),
+                            ISTRANSFER = ((_MIX.istransfer) ? "Y" : "N"),
                             REMARK = _MIX.remark
                         }).ToList();
+            });
+        }
+
+        public static async void UpdateWarrantyExpire()
+        {
+            ServiceDAL DB_Machine = new ServiceDAL();
+            await Task.Run(() =>
+            {
+                DB_Machine.MIXes.Where(x => x.isexpire.Equals(false)).ToList()
+                                .ForEach(c => { c.isexpire = c.exp < DateTime.Today; });
+                DB_Machine.SaveChanges();
             });
         }
     }

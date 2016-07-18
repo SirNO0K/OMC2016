@@ -7,7 +7,7 @@
     .dataTables_filter {
         display: none;
     }
-
+    th, td { white-space: nowrap; }
     .btn-default:hover {
         color: #333;
         background-color: #fff;
@@ -27,7 +27,7 @@
         <from class="navbar navbar-left" style="margin-bottom:-10px;">
             <div class="input-group">
                 <div class="input-group-btn">
-                    @Html.DropDownList("GroupCustomer", new List<SelectListItem> { new SelectListItem { Text = "-- Select Group --", Value = "0" } }, new { @class = "btn btn-default dropdown-toggle ddlProjectvalue" })
+                    @Html.DropDownList("GroupCustomer", new List<SelectListItem> { new SelectListItem { Text = "-- Select All Group --", Value = "0" } }, new { @class = "btn btn-default dropdown-toggle ddlProjectvalue" })
                 </div>
                 <input type="text" class="form-control" placeholder="Search Customer Name" id="txtSearch" style="height:32px;">
             </div>
@@ -85,7 +85,7 @@
 </div>
 
 <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
-<script src="~/Scripts/DataTables/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         if (window.orientation == 0) {
@@ -110,8 +110,10 @@
             searching: true,
             sort: false,
             autoWidth: true,
-            lengthChange: false,
-            bFilter: false,
+            scrollX: true,
+            scrollCollapse: true,
+            pagingType: "full_numbers",
+            lengthChange: false
         });
 
         $('#txtSearch').on('keyup change', function () {
@@ -124,13 +126,10 @@
             type: "GET",
             success: function (data) {
                 var $dpCustomerFroup = $(".ddlProjectvalue");
-                $('.ddlProjectvalue').find('option[value=0]').hide();
-
                 $.each(data, function (i) {
                     var optionhtml = '<option value="' + data[i].Key + '">' + data[i].Value + '</option>';
                     $dpCustomerFroup.append(optionhtml);
                 });
-                $dpCustomerFroup.append('<option value="0">Show ALL Customer</option>');
             },
             error: function () {
                 alert("Error");
@@ -140,7 +139,7 @@
         $('.ddlProjectvalue').change(function () {
             var val = $(this).find('option:selected').text();
             if ($(this).val() == 0) {
-                dataTableInstance.search('').columns(3).search('').draw();
+                dataTableInstance.search('').columns().search('').draw();
             }
             else {
                 dataTableInstance.columns(4).search(val).draw();

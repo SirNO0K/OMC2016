@@ -4,7 +4,7 @@
 }
 <br />
 
-<style>
+<style media="all" type="text/css">
     .panel-search {
         width: 120px;
     }
@@ -12,7 +12,26 @@
     .dataTables_filter {
         display: none;
     }
+    th, td { white-space: nowrap; }
+    div.dataTables_wrapper{
+        width: 100%;
+    }
 </style>
+
+@{
+    int IN_Warranty = 0;
+    int OUT_Warranty = 0;
+    foreach (var item in Model)
+    {
+        if (item.ISEXP.Equals("IN"))
+        {
+            IN_Warranty++;
+        }
+    }
+
+    OUT_Warranty = Model.Count() - IN_Warranty;
+
+}
 
 <div class="container-fluid hidden">
     <div class="panel panel-green panel-search " id="pnSearch">
@@ -29,7 +48,7 @@
                             <input type="text" class="form-control" placeholder="Search by Serial" id="txtSerail" style="height:32px;">
                         </div>
                         <div class="col-md-2">
-                            @Html.DropDownList("GroupCustomer", new List<SelectListItem> { new SelectListItem { Text = "-- Select Group --", Value = "0" } }, new { @class = "form-control", @placeholder = "Category" })
+                            <input type="text" class="form-control" placeholder="Search by Model" id="txtModel" style="height:32px;">
                         </div>
                         <div class="col-md-8">
                             <input type="text" class="form-control" placeholder="Search by Customer" id="txtCustomer" style="height:32px;">
@@ -44,20 +63,20 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">
-                Machine List
+                Machine List [ IN Warranty : @IN_Warranty | OUT Warranty : @OUT_Warranty ]
             </h3>
         </div>
 
         <div class="panel-body">
-            <table id="MachineList" class="table">
+            <table id="MachineList" class="stripe row-border order-column" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th></th>
                         <th>STATUS</th>
                         <th>CODE</th>
-                        <th>NAME</th>
+                        <th>CUSTOMER</th>
                         <th>MODEL</th>
-                        <th>SN</th>
+                        <th>S/N</th>
                         <th>START</th>
                         <th>EXPIRE</th>
                         <th>TRANSFER</th>
@@ -69,7 +88,7 @@
                     {
                         <tr>
                             <td>
-                                @Html.ActionLink("ดูรายละเอียด", "Detail", new { id = item.MIXID })
+                                @Html.ActionLink("Detail", "Detail", new { id = item.MIXID })
                             </td>
                             <td>
                                 @Html.DisplayFor(modelitem => item.ISEXP)
@@ -106,20 +125,24 @@
     </div>
 </div>
 
+<link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet"/>
+<script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
 
-<link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
-<script src="~/Scripts/DataTables/jquery.dataTables.min.js" type="text/javascript"></script>
-<script>
+<script type="text/javascript">
     $(function () {
         $(document).ready(function () {
             $('.container-fluid').removeClass('hidden');
 
-            $('#MachineList').DataTable({
+            var dataTableInstance = $('#MachineList').DataTable({
                 searching: true,
                 sort: false,
-                autoWidth: true,
                 lengthChange: false,
-                bFilter: false,
+                pagingType: "full_numbers",
+                scrollX: true,
+                scrollCollapse: true,
+                "columnDefs": [
+                { className: "text-center", "targets": [1,2,8] }
+                ]
             });
 
             $('#pnSearch')
@@ -129,6 +152,19 @@
               .on('hidden.bs.collapse', function (a) {
                   $('#pnSearch').addClass('panel-search');
               });
+
+            $('#txtSerail').on('keyup change', function () {
+                dataTableInstance.columns(5).search(this.value).draw();
+            });
+
+            $('#txtModel').on('keyup change', function () {
+                dataTableInstance.columns(4).search(this.value).draw();
+            });
+
+            $('#txtCustomer').on('keyup change', function () {
+                dataTableInstance.columns(3).search(this.value).draw();
+            });
+
         });
     });
 </script>
