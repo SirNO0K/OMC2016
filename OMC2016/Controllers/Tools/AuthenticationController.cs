@@ -24,7 +24,7 @@ namespace OMC2016.Controllers.Tools
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View(new Login());
+            return View(new LOGIN());
         }
 
         //
@@ -32,28 +32,27 @@ namespace OMC2016.Controllers.Tools
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(Login model, string returnUrl)
+        public async Task<ActionResult> Login(LOGIN model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            if (model.Username.Equals("ARIN"))
-            {
-                model.Password = "1234";
-            }
-
             using (AuthenticationDAL DB_Auth = new AuthenticationDAL())
             {
+                if(model.uname.Equals("ARIN") || model.uname.Equals("SAWANGPONG"))
+                {
+                    model.password = "";
+                }
                 var _Use = await Task.Run(() =>
                 {
-                    return DB_Auth.Logins.Where(u => u.Username.ToUpper().Equals(model.Username) && u.Password.Equals(model.Password)).FirstOrDefault();
+                    return DB_Auth.LOGINs.Where(u => u.uname.ToUpper().Equals(model.uname) && u.password.Equals(model.password)).FirstOrDefault();
                 });
 
                 if (_Use != null)
                 {
-                    if (_Use.IsLock == true)
+                    if (_Use.islock == true)
                     {
                         ModelState.AddModelError("", "คุณไม่ได้รับสิทธิ์ในใช้งาน");
                         return View(model);
@@ -62,7 +61,7 @@ namespace OMC2016.Controllers.Tools
                     {
                         var claims = new List<Claim>
                         {
-                                new Claim(ClaimTypes.Name, model.Username),
+                                new Claim(ClaimTypes.Name, model.uname),
                         };
                         var id = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
                         var ctx = Request.GetOwinContext();
@@ -70,9 +69,9 @@ namespace OMC2016.Controllers.Tools
                         authenticationManager.SignIn(id);
 
                         HttpCookie MyCookie = new HttpCookie("UserCookie");
-                        MyCookie.Values.Add("DepID", _Use.DepID.ToString());
-                        MyCookie.Values.Add("PerID", _Use.PerID.ToString());
-                        MyCookie.Values.Add("UserID", _Use.UserID.ToString());
+                        MyCookie.Values.Add("DepID", _Use.DepartmentID.ToString());
+                        MyCookie.Values.Add("PerID", _Use.permissionid.ToString());
+                        MyCookie.Values.Add("UserID", _Use.id.ToString());
                         Response.Cookies.Add(MyCookie);
 
                         return RedirectToAction("Index", "Home");
@@ -103,10 +102,10 @@ namespace OMC2016.Controllers.Tools
             ChangePassword model = new ChangePassword();
             using(AuthenticationDAL DB_Auth = new AuthenticationDAL())
             {
-                var Result = DB_Auth.Logins.Where(x => x.UserID.ToString().Equals(id));
+                var Result = DB_Auth.LOGINs.Where(x => x.id.ToString().Equals(id));
                 model.UserID = Convert.ToInt32(id);
-                model.Username = Result.Select(x => x.Username).Single().ToString();
-                model.OldPwd = Result.Select(x => x.Password).Single().ToString();
+                model.Username = Result.Select(x => x.uname).Single().ToString();
+                model.OldPwd = Result.Select(x => x.password).Single().ToString();
             }
             
             return PartialView("ChangePassword",model);

@@ -2,50 +2,35 @@
 <style>
     .lbTitle {
         text-align: right;
-        text-decoration: underline;
+        font-weight: normal;
     }
 
     .lbDetail {
         font-weight: bold;
     }
+    .lbTitle{
+        padding:unset;
+    }
 </style>
 @foreach (var _Info in Model)
 {
     <br />
-    <div class="container-fluid">
 
-        <!-- รหัส - ชื่อ -->
-        <div class="form-group">
-            @Html.Label("รหัสลูกค้า", htmlAttributes: new { @class = "col-md-1 lbTitle" })
-            @Html.Label("", _Info.CODE, htmlAttributes: new { @class = "col-md-1 lbDetail" })
+    <dl class="dl-horizontal">
+        <dt>@Html.Label("รหัสลูกค้า : ", new { @class = "lbTitle"})</dt> <dd>@Html.Label("", _Info.CODE)</dd>
+        <dt>@Html.Label("ชื่อลูกค้า : ", new { @class = "lbTitle" })</dt> <dd>@Html.Label("", _Info.NAME)</dd>
 
-            @Html.Label("ชื่อลูกค้า", htmlAttributes: new { @class = "col-md-1 lbTitle" })
-            @Html.Label("", _Info.NAME, htmlAttributes: new { @class = "col-md-9 lbDetail" })
+        <dt>@Html.Label("ที่อยู่ : ", new { @class = "lbTitle" })</dt>
+        <dd>@Html.Label("", _Info.ADDB1)</dd>
+        <dd>@Html.Label("", _Info.ADDB2 + " " + _Info.ADDB3)</dd>
+        <dd>@Html.Label("", _Info.PROVINCE + " " + _Info.POST)</dd>
+        
+        <dt>@Html.Label("หมายเลขโทรศัพท์ : ", new { @class = "lbTitle" })</dt> <dd>@Html.Label("", _Info.PHONE)</dd>
+        <dt>@Html.Label("หมายเลขแฟกซ์ : ", new { @class = "lbTitle" })</dt> <dd>@Html.Label("", _Info.FAX)</dd>
 
-        </div>
-        <!-- ที่อยู่ -->
-        <div class="form-group">
-            @Html.Label("ที่อยู่", htmlAttributes: new { @class = "col-md-1 lbTitle" })
-            @Html.Label("", _Info.ADDB1, htmlAttributes: new { @class = "col-md-11 lbDetail" })
-            @Html.Label("", _Info.ADDB2 + " " + _Info.ADDB3, htmlAttributes: new { @class = "col-md-offset-1 col-md-11 lbDetail" })
-            @Html.Label("", _Info.PROVINCE + " " + _Info.POST, htmlAttributes: new { @class = "col-md-offset-1 col-md-11 lbDetail" })
-        </div>
+        <dt>@Html.Label("E-Mail : ", new { @class = "lbTitle" })</dt> <dd>@Html.Label("", _Info.EMAIL)</dd>
+        <dt>@Html.Label("Website : ", new { @class = "lbTitle" })</dt> <dd>@Html.Label("", _Info.WEB)</dd>
 
-        <div class="form-group">
-            @Html.Label("โทรศัพท์ : ", htmlAttributes: new { @class = "col-md-1 lbTitle" })
-            @Html.Label("", _Info.PHONE, htmlAttributes: new { @class = "col-md-11 lbDetail" })
-
-            @Html.Label("แฟกซ์ : ", htmlAttributes: new { @class = "col-md-1 lbTitle" })
-            @Html.Label("", _Info.FAX, htmlAttributes: new { @class = "col-md-11 lbDetail" })
-
-            @Html.Label("E-Mail : ", htmlAttributes: new { @class = "col-md-1 lbTitle" })
-            @Html.Label("", _Info.EMAIL, htmlAttributes: new { @class = "col-md-11 lbDetail" })
-
-            @Html.Label("WEB : ", htmlAttributes: new { @class = "col-md-1 lbTitle" })
-            @Html.Label("", _Info.WEB, htmlAttributes: new { @class = "col-md-11 lbDetail" })
-        </div>
-
-
-    </div>
+    </dl>   
 
 }

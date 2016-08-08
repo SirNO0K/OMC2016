@@ -5,6 +5,79 @@ body {
     background-color: #34495e;
 }
 
+.divContainer
+{     
+    text-align: right;
+    font-size: large;
+    position: absolute;
+    visibility: visible;
+    width: 98%;
+    filter: alpha(opacity=75 );
+    -moz-opacity: 0.75;
+    opacity = 0.75;
+    vertical-align: middle;
+    display: inline;
+    height: 98%;
+    background-color:#000000;
+    border-right: white thick outset; 
+    border-top: white thick outset; 
+    border-left: white thick outset;
+    border-bottom: white thick outset;  
+    z-index:99999;
+    }
+
+.divLoaderBack
+{
+    background-color: #444141;
+    color: #ffffff;
+    font-size:x-small;
+    height: 10px;
+    visibility: visible;
+    width: 510px;
+    border-right: #aeb2b1 outset;
+    padding-right: 5px;
+    border-top: #aeb2b1 outset;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-left: #aeb2b1 outset;
+    padding-top: 5px;
+    border-bottom: #aeb2b1 outset;
+    margin-top: 15px;
+    vertical-align: middle;
+    text-align: left;
+    margin: auto;
+    top:50%;
+    position:relative;
+    
+}
+.divLoaderProgress
+{
+    background-color: #e2e7eb;
+    color: gray;
+    padding: 5px,0px,0px,5px;
+    position: relative;
+    visibility: visible;
+    height: 5px;
+    width: 0px;
+}
+
+.divLoadingStat
+{
+    background-color: Transparent;
+    border-color: #ffffff;
+    color: #ffffff;
+    padding: 5px,0px,0px,5px;
+    position: relative;
+    visibility: visible;
+    border-width: medium;
+    width: 100%;
+    height: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    top:50%;
+
+}
+
 #wrapper {
     width: 100%;
 }

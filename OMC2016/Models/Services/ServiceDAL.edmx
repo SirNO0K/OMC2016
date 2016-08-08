@@ -18,7 +18,7 @@
           <Property Name="isnewproduct" Type="bit" Nullable="false" />
           <Property Name="istransfer" Type="bit" Nullable="false" />
           <Property Name="transferdate" Type="datetime" />
-          <Property Name="mix_id" Type="int" Nullable="false" />
+          <Property Name="mix_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="s_no" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="cus_na" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -39,8 +39,100 @@
           <Property Name="modiuser" Type="nvarchar" MaxLength="50" />
           <Property Name="modidt" Type="datetime" />
         </EntityType>
+        <EntityType Name="ORDERFIXED">
+          <Key>
+            <PropertyRef Name="lineid" />
+          </Key>
+          <Property Name="lineid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderid" Type="int" Nullable="false" />
+          <Property Name="ordercode" Type="nvarchar" MaxLength="3" />
+          <Property Name="s_order" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="datefixed" Type="datetime" Nullable="false" />
+          <Property Name="fixeddetail" Type="ntext" />
+          <Property Name="engcode1" Type="nvarchar" MaxLength="10" />
+          <Property Name="engineer1" Type="nvarchar" MaxLength="30" />
+          <Property Name="engcode2" Type="nvarchar" MaxLength="10" />
+          <Property Name="engineer2" Type="nvarchar" MaxLength="30" />
+          <Property Name="engcode3" Type="nvarchar" MaxLength="10" />
+          <Property Name="engineer3" Type="nvarchar" MaxLength="30" />
+          <Property Name="engcode4" Type="nvarchar" MaxLength="10" />
+          <Property Name="engineer4" Type="nvarchar" MaxLength="30" />
+          <Property Name="isdelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDERMAINTENANCE">
+          <Key>
+            <PropertyRef Name="orderCode" />
+            <PropertyRef Name="s_order" />
+          </Key>
+          <Property Name="isdelete" Type="bit" Nullable="false" />
+          <Property Name="status" Type="int" />
+          <Property Name="isPM" Type="bit" Nullable="false" />
+          <Property Name="pmmasterline" Type="int" Nullable="false" />
+          <Property Name="pmschline" Type="int" Nullable="false" />
+          <Property Name="pmAppointDate" Type="datetime" />
+          <Property Name="orderTypeid" Type="int" Nullable="false" />
+          <Property Name="actionpiority" Type="int" Nullable="false" />
+          <Property Name="orderdate" Type="datetime" />
+          <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="s_order" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="yearservice" Type="int" Nullable="false" />
+          <Property Name="ordercountno" Type="int" Nullable="false" />
+          <Property Name="or_date" Type="nvarchar" MaxLength="10" />
+          <Property Name="custid" Type="int" Nullable="false" />
+          <Property Name="acccustcode" Type="nvarchar" MaxLength="10" />
+          <Property Name="cus_na" Type="nvarchar" MaxLength="100" />
+          <Property Name="productid" Type="nvarchar" MaxLength="10" />
+          <Property Name="type" Type="nvarchar" MaxLength="30" />
+          <Property Name="s_no" Type="nvarchar" MaxLength="30" />
+          <Property Name="errorcode" Type="nvarchar" MaxLength="10" />
+          <Property Name="error" Type="nvarchar" MaxLength="4000" />
+          <Property Name="month" Type="nvarchar" MaxLength="2" />
+          <Property Name="period" Type="int" Nullable="false" />
+          <Property Name="fiscyear" Type="int" Nullable="false" />
+          <Property Name="year" Type="datetime" />
+          <Property Name="duedate" Type="int" Nullable="false" />
+          <Property Name="finishdate" Type="datetime" />
+          <Property Name="inWarrantyService" Type="bit" Nullable="false" />
+          <Property Name="servicecost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="sparepartcost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="audituser" Type="nvarchar" MaxLength="30" />
+          <Property Name="auditdt" Type="datetime" />
+          <Property Name="modiuser" Type="nvarchar" MaxLength="30" />
+          <Property Name="modidt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ORDERSPAREPARTS">
+          <Key>
+            <PropertyRef Name="spLine" />
+          </Key>
+          <Property Name="spLine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="issueno" Type="nvarchar" MaxLength="20" />
+          <Property Name="dateneed" Type="datetime" Nullable="false" />
+          <Property Name="orderid" Type="int" Nullable="false" />
+          <Property Name="ordercode" Type="nvarchar" MaxLength="3" />
+          <Property Name="s_order" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="indatabase" Type="bit" Nullable="false" />
+          <Property Name="itemno" Type="nvarchar" MaxLength="30" />
+          <Property Name="itemname" Type="nvarchar" MaxLength="80" />
+          <Property Name="uom" Type="nvarchar" MaxLength="10" />
+          <Property Name="qtyneed" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ucost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="uprice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="discount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="netuprice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="totalprice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="itemremark" Type="nvarchar" MaxLength="1000" />
+          <Property Name="isdelete" Type="bit" Nullable="false" />
+          <Property Name="audituser" Type="nvarchar" MaxLength="30" />
+          <Property Name="auditdt" Type="datetime" />
+          <Property Name="modiuser" Type="nvarchar" MaxLength="30" />
+          <Property Name="modidt" Type="datetime" />
+        </EntityType>
         <EntityContainer Name="ServiceDALStoreContainer">
           <EntitySet Name="MIX" EntityType="Self.MIX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERFIXED" EntityType="Self.ORDERFIXED" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERMAINTENANCE" EntityType="Self.ORDERMAINTENANCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERSPAREPARTS" EntityType="Self.ORDERSPAREPARTS" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -48,6 +140,9 @@
       <Schema Namespace="ServiceDAL" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="MIXes" EntityType="ServiceDAL.MIX" />
+          <EntitySet Name="ORDERMAINTENANCEs" EntityType="ServiceDAL.ORDERMAINTENANCE" />
+          <EntitySet Name="ORDERFIXEDs" EntityType="ServiceDAL.ORDERFIXED" />
+          <EntitySet Name="ORDERSPAREPARTS" EntityType="ServiceDAL.ORDERSPAREPART" />
         </EntityContainer>
         <EntityType Name="MIX">
           <Key>
@@ -81,6 +176,95 @@
           <Property Name="audituser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="auditdt" Type="DateTime" Precision="3" />
           <Property Name="modiuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="modidt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ORDERMAINTENANCE">
+          <Key>
+            <PropertyRef Name="orderCode" />
+            <PropertyRef Name="s_order" />
+          </Key>
+          <Property Name="isdelete" Type="Boolean" Nullable="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="isPM" Type="Boolean" Nullable="false" />
+          <Property Name="pmmasterline" Type="Int32" Nullable="false" />
+          <Property Name="pmschline" Type="Int32" Nullable="false" />
+          <Property Name="pmAppointDate" Type="DateTime" Precision="3" />
+          <Property Name="orderTypeid" Type="Int32" Nullable="false" />
+          <Property Name="actionpiority" Type="Int32" Nullable="false" />
+          <Property Name="orderdate" Type="DateTime" Precision="3" />
+          <Property Name="orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderCode" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="s_order" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="yearservice" Type="Int32" Nullable="false" />
+          <Property Name="ordercountno" Type="Int32" Nullable="false" />
+          <Property Name="or_date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="custid" Type="Int32" Nullable="false" />
+          <Property Name="acccustcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cus_na" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="productid" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="s_no" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="errorcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="error" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="month" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="period" Type="Int32" Nullable="false" />
+          <Property Name="fiscyear" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="DateTime" Precision="3" />
+          <Property Name="duedate" Type="Int32" Nullable="false" />
+          <Property Name="finishdate" Type="DateTime" Precision="3" />
+          <Property Name="inWarrantyService" Type="Boolean" Nullable="false" />
+          <Property Name="servicecost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="sparepartcost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="audituser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="auditdt" Type="DateTime" Precision="3" />
+          <Property Name="modiuser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="modidt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ORDERFIXED">
+          <Key>
+            <PropertyRef Name="lineid" />
+          </Key>
+          <Property Name="lineid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderid" Type="Int32" Nullable="false" />
+          <Property Name="ordercode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="s_order" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="datefixed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fixeddetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="engcode1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="engineer1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="engcode2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="engineer2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="engcode3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="engineer3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="engcode4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="engineer4" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="isdelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDERSPAREPART">
+          <Key>
+            <PropertyRef Name="spLine" />
+          </Key>
+          <Property Name="spLine" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="issueno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dateneed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="orderid" Type="Int32" Nullable="false" />
+          <Property Name="ordercode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="s_order" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="indatabase" Type="Boolean" Nullable="false" />
+          <Property Name="itemno" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="itemname" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="uom" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="qtyneed" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ucost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="uprice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="discount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="netuprice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="totalprice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="itemremark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="isdelete" Type="Boolean" Nullable="false" />
+          <Property Name="audituser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="auditdt" Type="DateTime" Precision="3" />
+          <Property Name="modiuser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="modidt" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
@@ -118,6 +302,97 @@
                 <ScalarProperty Name="isexpire" ColumnName="isexpire" />
                 <ScalarProperty Name="isdelete" ColumnName="isdelete" />
                 <ScalarProperty Name="productid" ColumnName="productid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERMAINTENANCEs">
+            <EntityTypeMapping TypeName="ServiceDAL.ORDERMAINTENANCE">
+              <MappingFragment StoreEntitySet="ORDERMAINTENANCE">
+                <ScalarProperty Name="modidt" ColumnName="modidt" />
+                <ScalarProperty Name="modiuser" ColumnName="modiuser" />
+                <ScalarProperty Name="auditdt" ColumnName="auditdt" />
+                <ScalarProperty Name="audituser" ColumnName="audituser" />
+                <ScalarProperty Name="sparepartcost" ColumnName="sparepartcost" />
+                <ScalarProperty Name="servicecost" ColumnName="servicecost" />
+                <ScalarProperty Name="inWarrantyService" ColumnName="inWarrantyService" />
+                <ScalarProperty Name="finishdate" ColumnName="finishdate" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="fiscyear" ColumnName="fiscyear" />
+                <ScalarProperty Name="period" ColumnName="period" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="error" ColumnName="error" />
+                <ScalarProperty Name="errorcode" ColumnName="errorcode" />
+                <ScalarProperty Name="s_no" ColumnName="s_no" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="cus_na" ColumnName="cus_na" />
+                <ScalarProperty Name="acccustcode" ColumnName="acccustcode" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="or_date" ColumnName="or_date" />
+                <ScalarProperty Name="ordercountno" ColumnName="ordercountno" />
+                <ScalarProperty Name="yearservice" ColumnName="yearservice" />
+                <ScalarProperty Name="s_order" ColumnName="s_order" />
+                <ScalarProperty Name="orderCode" ColumnName="orderCode" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="actionpiority" ColumnName="actionpiority" />
+                <ScalarProperty Name="orderTypeid" ColumnName="orderTypeid" />
+                <ScalarProperty Name="pmAppointDate" ColumnName="pmAppointDate" />
+                <ScalarProperty Name="pmschline" ColumnName="pmschline" />
+                <ScalarProperty Name="pmmasterline" ColumnName="pmmasterline" />
+                <ScalarProperty Name="isPM" ColumnName="isPM" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERFIXEDs">
+            <EntityTypeMapping TypeName="ServiceDAL.ORDERFIXED">
+              <MappingFragment StoreEntitySet="ORDERFIXED">
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="engineer4" ColumnName="engineer4" />
+                <ScalarProperty Name="engcode4" ColumnName="engcode4" />
+                <ScalarProperty Name="engineer3" ColumnName="engineer3" />
+                <ScalarProperty Name="engcode3" ColumnName="engcode3" />
+                <ScalarProperty Name="engineer2" ColumnName="engineer2" />
+                <ScalarProperty Name="engcode2" ColumnName="engcode2" />
+                <ScalarProperty Name="engineer1" ColumnName="engineer1" />
+                <ScalarProperty Name="engcode1" ColumnName="engcode1" />
+                <ScalarProperty Name="fixeddetail" ColumnName="fixeddetail" />
+                <ScalarProperty Name="datefixed" ColumnName="datefixed" />
+                <ScalarProperty Name="s_order" ColumnName="s_order" />
+                <ScalarProperty Name="ordercode" ColumnName="ordercode" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="lineid" ColumnName="lineid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERSPAREPARTS">
+            <EntityTypeMapping TypeName="ServiceDAL.ORDERSPAREPART">
+              <MappingFragment StoreEntitySet="ORDERSPAREPARTS">
+                <ScalarProperty Name="modidt" ColumnName="modidt" />
+                <ScalarProperty Name="modiuser" ColumnName="modiuser" />
+                <ScalarProperty Name="auditdt" ColumnName="auditdt" />
+                <ScalarProperty Name="audituser" ColumnName="audituser" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="itemremark" ColumnName="itemremark" />
+                <ScalarProperty Name="totalprice" ColumnName="totalprice" />
+                <ScalarProperty Name="netuprice" ColumnName="netuprice" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="uprice" ColumnName="uprice" />
+                <ScalarProperty Name="ucost" ColumnName="ucost" />
+                <ScalarProperty Name="qtyneed" ColumnName="qtyneed" />
+                <ScalarProperty Name="uom" ColumnName="uom" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="itemno" ColumnName="itemno" />
+                <ScalarProperty Name="indatabase" ColumnName="indatabase" />
+                <ScalarProperty Name="s_order" ColumnName="s_order" />
+                <ScalarProperty Name="ordercode" ColumnName="ordercode" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="dateneed" ColumnName="dateneed" />
+                <ScalarProperty Name="issueno" ColumnName="issueno" />
+                <ScalarProperty Name="spLine" ColumnName="spLine" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

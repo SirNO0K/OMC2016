@@ -28,7 +28,7 @@ namespace OMC2016.Controllers.Customer
                                 CustomeName = _ARFILE.AR_NAME.ToString(),
                                 CustomerPhone = _ADDRBOOK.ADDB_PHONE.ToString(),
                                 CustomerGroup = _ARCAT.ARCAT_NAME.ToString()
-                            }).ToList();
+                            }).AsParallel().ToList();
                 }
             });
         }
@@ -50,7 +50,7 @@ namespace OMC2016.Controllers.Customer
                         join _ARADDB in DB_Customer.ARADDRESSes on _KEY.ADDB_KEY equals _ARADDB.ARA_ADDB
                         join _ARFILE in DB_Customer.ARFILEs on _ARADDB.ARA_AR equals _ARFILE.AR_KEY
                         where _ARFILE.AR_CODE.Equals(AR_CODE)
-                        select _KEY.ADDB_KEY).First().ToString();
+                        select _KEY.ADDB_KEY).AsParallel().First().ToString();
             }
         }
         public static IList CustomerInfo(string AR_CODE)
@@ -76,7 +76,7 @@ namespace OMC2016.Controllers.Customer
                             FAX = !string.IsNullOrEmpty(_ADDRBOOK.ADDB_FAX) ? _ADDRBOOK.ADDB_FAX : "N/A",
                             WEB = !string.IsNullOrEmpty(_ADDRBOOK.ADDB_WEBSITE) ? _ADDRBOOK.ADDB_WEBSITE : "N/A",
                             EMAIL = !string.IsNullOrEmpty(_ADDRBOOK.ADDB_EMAIL) ? _ADDRBOOK.ADDB_EMAIL : "N/A"
-                        }).ToList();
+                        }).AsParallel().ToList();
             }
         }
         public static IList ContactInfo(string ADDBKEY)
@@ -94,7 +94,7 @@ namespace OMC2016.Controllers.Customer
                             JOB = _Contact.CT_JOBTITLE,
                             PHONE = _Contact.CT_MOBILE,
                             EMAIL = _Contact.CT_EMAIL
-                        }).ToList();
+                        }).AsParallel().ToList();
             }
         }
     }

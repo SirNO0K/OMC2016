@@ -25,8 +25,8 @@ namespace OMC2016.Models.Tools
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Department> Departments { get; set; }
-        public virtual DbSet<Login> Logins { get; set; }
-        public virtual DbSet<Permission> Permissions { get; set; }
+        public virtual DbSet<DEPARTMENT> DEPARTMENTs { get; set; }
+        public virtual DbSet<LOGIN> LOGINs { get; set; }
+        public virtual DbSet<PERMISSION> PERMISSIONs { get; set; }
     }
 }

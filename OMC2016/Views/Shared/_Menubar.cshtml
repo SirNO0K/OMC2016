@@ -32,7 +32,7 @@
                 PerID = Request.Cookies["UserCookie"]["PerID"];
             }
 
-            if (Request.IsAuthenticated && PerID == "99")
+            if (Request.IsAuthenticated && PerID == "9")
             {
         <li class="dropdown">
             <a class="navbar-Admin dropdown-toggle" data-toggle="dropdown" href="#">
@@ -168,7 +168,7 @@
                     if (item.MenuIsParrent == false && item.MenuParrentID == 0)
                     {
                         //Dep = ICT Show All Department
-                        if (DepID == "4")
+                        if (DepID == "15")
                         {
                             if (item.MenuController == null)
                             {
@@ -205,7 +205,7 @@
                                 <ul class="nav nav-second-level">
                                     @foreach (var Level2 in Model.Where(p => p.MenuParrentID == item.MenuID).OrderBy(o => o.MenuNameOption))
                                     {
-                                        if (DepID == "4")
+                                        if (DepID == "15")
                                         {
                                             if (Level2.MenuIsParrent == true)
                                             {

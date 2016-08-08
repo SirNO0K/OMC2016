@@ -33,6 +33,32 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="System-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=OM-ICT-01\SQLEXPRESS%3bInitial Catalog=OLDMOON%3bPersist Security Info=True%3bUser ID=Sa%3bPassword=o6Udojkiydot%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\System-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="Account-Deployment" Order="2">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=OM-SRV-APP\ERP%3bInitial Catalog=ERP%3bPersist Security Info=True%3bUser ID=admin%3bPassword=ty1076%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\Account-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="Menubar-Deployment" Order="3">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDB%29\MSSQLLocalDB%3bAttachDbFilename=|DataDirectory|\dbMenubar.mdf%3bIntegrated Security=True%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\Menubar-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -152,6 +178,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\dbMenubar.mdf" />
+    <Content Include="App_Data\dbMenubar_log.ldf">
+      <DependentUpon>dbMenubar.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -338,20 +368,6 @@
     <Content Include="Content\morrisjs\bower.travis.json" />
     <Content Include="Content\morrisjs\package.json" />
     <Content Include="Content\morrisjs\README.md" />
-    <EntityDeploy Include="Models\Tools\Menubar.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Menubar.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Tools\Menubar.edmx.diagram">
-      <DependentUpon>Menubar.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\Tools\Authentication.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Authentication.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Tools\Authentication.edmx.diagram">
-      <DependentUpon>Authentication.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\Customer\Customer.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Customer.Designer.cs</LastGenOutput>
@@ -365,6 +381,20 @@
     </EntityDeploy>
     <Content Include="Models\Services\ServiceDAL.edmx.diagram">
       <DependentUpon>ServiceDAL.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Tools\Authentication.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Authentication.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Tools\Authentication.edmx.diagram">
+      <DependentUpon>Authentication.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Tools\Menubar.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Menubar.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Tools\Menubar.edmx.diagram">
+      <DependentUpon>Menubar.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\OMC2016.pubxml" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
@@ -473,6 +503,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\loadingNotifier.js" />
     <Content Include="Scripts\metisMenu.js" />
     <Content Include="Scripts\metisMenu.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -502,6 +533,9 @@
     <Compile Include="Controllers\Tools\ctlPublicFunction.cs" />
     <Compile Include="Filters\AuthActionFilter.cs" />
     <Compile Include="Filters\HttpParamAction.cs" />
+    <Compile Include="Filters\LoadingNotifier.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -543,6 +577,15 @@
     <Compile Include="Models\Services\MIX.cs">
       <DependentUpon>ServiceDAL.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Services\ORDERFIXED.cs">
+      <DependentUpon>ServiceDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Services\ORDERMAINTENANCE.cs">
+      <DependentUpon>ServiceDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Services\ORDERSPAREPART.cs">
+      <DependentUpon>ServiceDAL.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Services\ServiceDAL.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -575,10 +618,10 @@
       <DependentUpon>Authentication.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Tools\ChangePassword.cs" />
-    <Compile Include="Models\Tools\Department.cs">
+    <Compile Include="Models\Tools\DEPARTMENT.cs">
       <DependentUpon>Authentication.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Tools\Login.cs">
+    <Compile Include="Models\Tools\LOGIN.cs">
       <DependentUpon>Authentication.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tools\Menubar.Context.cs">
@@ -599,10 +642,7 @@
     <Compile Include="Models\Tools\MenuBarItem.cs">
       <DependentUpon>Menubar.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Tools\MenuRole.cs">
-      <DependentUpon>Menubar.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Tools\Permission.cs">
+    <Compile Include="Models\Tools\PERMISSION.cs">
       <DependentUpon>Authentication.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -624,7 +664,8 @@
     <Content Include="Views\Customer\_CustomerInfo.cshtml" />
     <Content Include="Views\Customer\_ContactList.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Service\MachineSearch.cshtml" />
+    <Content Include="Views\Service\Dashboard.cshtml" />
+    <Content Include="Views\Service\MachineDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -633,7 +674,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\morrisjs\examples\" />
     <Folder Include="Content\morrisjs\less\" />
     <Folder Include="Content\morrisjs\lib\" />

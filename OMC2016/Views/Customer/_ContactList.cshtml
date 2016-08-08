@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<OMC2016.Models.Customer.ContactList>
+<style>
+    th, td { white-space: nowrap; }
+</style>
 
-<br />
-<div class="container">
-    <table id="ContactList" style="width:100%" class="table">
+<div class="col-md-12">
+    <table id="ContactList" class="stripe row-border table" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>
@@ -55,9 +57,7 @@
         var dtContactList = $('#ContactList').DataTable({
             searching: false,
             sort: false,
-            autoWidth: true,
             lengthChange: false,
-            bFilter: false,
         });
     });
 </script>

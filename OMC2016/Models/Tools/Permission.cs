@@ -12,9 +12,10 @@ namespace OMC2016.Models.Tools
     using System;
     using System.Collections.Generic;
     
-    public partial class Permission
+    public partial class PERMISSION
     {
-        public int PerID { get; set; }
-        public string PerName { get; set; }
+        public string P_id { get; set; }
+        public int permission1 { get; set; }
+        public string P_name { get; set; }
     }
 }

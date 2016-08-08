@@ -6,6 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="ee7873b1f2824e7fb23d8d197357a804" Name="Diagram1" ZoomLevel="67">
         <EntityTypeShape EntityType="ServiceDAL.MIX" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ServiceDAL.ORDERMAINTENANCE" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ServiceDAL.ORDERFIXED" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ServiceDAL.ORDERSPAREPART" Width="1.5" PointX="5.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

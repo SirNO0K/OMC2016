@@ -9,18 +9,17 @@
 
 namespace OMC2016.Models.Tools
 {
-    using System.ComponentModel.DataAnnotations;    
-    public partial class Login
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class LOGIN
     {
-        public int UserID { get; set; }
-
-        [Required]
-        public string Username { get; set; }
-
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-        public int DepID { get; set; }
-        public int PerID { get; set; }
-        public bool IsLock { get; set; }
+        public int id { get; set; }
+        public string uname { get; set; }
+        public string password { get; set; }
+        public int permissionid { get; set; }
+        public string auditclass { get; set; }
+        public bool islock { get; set; }
+        public Nullable<int> DepartmentID { get; set; }
     }
 }

@@ -26,5 +26,8 @@ namespace OMC2016.Models.Services
         }
     
         public virtual DbSet<MIX> MIXes { get; set; }
+        public virtual DbSet<ORDERMAINTENANCE> ORDERMAINTENANCEs { get; set; }
+        public virtual DbSet<ORDERFIXED> ORDERFIXEDs { get; set; }
+        public virtual DbSet<ORDERSPAREPART> ORDERSPAREPARTS { get; set; }
     }
 }

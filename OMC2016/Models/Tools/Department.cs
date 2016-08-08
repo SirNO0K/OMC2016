@@ -12,10 +12,10 @@ namespace OMC2016.Models.Tools
     using System;
     using System.Collections.Generic;
     
-    public partial class Department
+    public partial class DEPARTMENT
     {
-        public int DepID { get; set; }
-        public string DepEN { get; set; }
-        public string DepTH { get; set; }
+        public int DEPARTMENTID { get; set; }
+        public string DEPARTMENTEN { get; set; }
+        public string DEPARTMENTTH { get; set; }
     }
 }

@@ -4,9 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a33c921cebb14a718251d98e980c7690" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.MenuBarItem" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MenuRole" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="ec8792cbaf544b97aff70b3877b917d1" Name="Diagram1">
+        <EntityTypeShape EntityType="MenubarDAL.MenuBarItem" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

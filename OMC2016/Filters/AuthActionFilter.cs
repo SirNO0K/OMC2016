@@ -50,9 +50,9 @@ namespace OMC2016.Filters
             var actionName = routeData.Values["action"].ToString();
             AuthenticationDAL DB_Auth = new AuthenticationDAL();
 
-            var getAccess = (from _User in DB_Auth.Logins
-                             where _User.Username == userName
-                             select _User.UserID).First();
+            var getAccess = (from _User in DB_Auth.LOGINs
+                             where _User.uname == userName
+                             select _User.id).First();
 
             var context = new ActionExecutingContext();
 

@@ -16,7 +16,7 @@ namespace OMC2016.Models.Tools
     public partial class MenubarDAL : DbContext
     {
         public MenubarDAL()
-            : base(DBLibrary.SystemConnectionString(ModelList.Menubar))
+            : base("name=Menubar")
         {
         }
     
@@ -26,6 +26,5 @@ namespace OMC2016.Models.Tools
         }
     
         public virtual DbSet<MenuBarItem> MenuBarItems { get; set; }
-        public virtual DbSet<MenuRole> MenuRoles { get; set; }
     }
 }
